@@ -19,6 +19,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
+                Text("ari coba")
                 ForEach(items) { item in
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
