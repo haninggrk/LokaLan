@@ -12,7 +12,9 @@
 		CCAD30882A428C830074C325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAD30872A428C830074C325 /* Assets.xcassets */; };
 		CCAD308B2A428C830074C325 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAD308A2A428C830074C325 /* Preview Assets.xcassets */; };
 		CCAD308D2A428C830074C325 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD308C2A428C830074C325 /* Persistence.swift */; };
-		CCAD30902A428C830074C325 /* LokaLan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCAD308E2A428C830074C325 /* LokaLan.xcdatamodeld */; };
+		CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30A62A429E930074C325 /* CoreDataManager.swift */; };
+		CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30A82A429FED0074C325 /* UserViewModel.swift */; };
+		CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30AA2A42A0E10074C325 /* LokaLan.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +24,10 @@
 		CCAD30872A428C830074C325 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCAD308A2A428C830074C325 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CCAD308C2A428C830074C325 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		CCAD308F2A428C830074C325 /* LokaLan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LokaLan.xcdatamodel; sourceTree = "<group>"; };
 		CCAD30912A428C830074C325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCAD30A62A429E930074C325 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CCAD30A82A429FED0074C325 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		CCAD30AB2A42A0E10074C325 /* LokaLan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LokaLan.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +60,16 @@
 		CCAD30822A428C820074C325 /* LokaLan */ = {
 			isa = PBXGroup;
 			children = (
+				CCAD30A52A429E7F0074C325 /* Helpers */,
+				CCAD30A42A429DFE0074C325 /* ViewModel */,
+				CCAD30A32A429DF80074C325 /* View */,
+				CCAD30A22A429DEF0074C325 /* Model */,
 				CCAD30832A428C820074C325 /* LokaLanApp.swift */,
 				CCAD30852A428C820074C325 /* ContentView.swift */,
 				CCAD30872A428C830074C325 /* Assets.xcassets */,
 				CCAD308C2A428C830074C325 /* Persistence.swift */,
 				CCAD30912A428C830074C325 /* Info.plist */,
-				CCAD308E2A428C830074C325 /* LokaLan.xcdatamodeld */,
+				CCAD30AA2A42A0E10074C325 /* LokaLan.xcdatamodeld */,
 				CCAD30892A428C830074C325 /* Preview Content */,
 			);
 			path = LokaLan;
@@ -73,6 +81,36 @@
 				CCAD308A2A428C830074C325 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CCAD30A22A429DEF0074C325 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCAD30A32A429DF80074C325 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCAD30A42A429DFE0074C325 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCAD30A82A429FED0074C325 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CCAD30A52A429E7F0074C325 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CCAD30A62A429E930074C325 /* CoreDataManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
 				CCAD308D2A428C830074C325 /* Persistence.swift in Sources */,
+				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
-				CCAD30902A428C830074C325 /* LokaLan.xcdatamodeld in Sources */,
+				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,12 +391,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CCAD308E2A428C830074C325 /* LokaLan.xcdatamodeld */ = {
+		CCAD30AA2A42A0E10074C325 /* LokaLan.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CCAD308F2A428C830074C325 /* LokaLan.xcdatamodel */,
+				CCAD30AB2A42A0E10074C325 /* LokaLan.xcdatamodel */,
 			);
-			currentVersion = CCAD308F2A428C830074C325 /* LokaLan.xcdatamodel */;
+			currentVersion = CCAD30AB2A42A0E10074C325 /* LokaLan.xcdatamodel */;
 			path = LokaLan.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
