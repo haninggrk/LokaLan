@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E982A44031A00601299 /* WordViewModel.swift */; };
+		CC1F6E9B2A4407B600601299 /* LocalLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */; };
+		CC1F6E9D2A440A5600601299 /* LocalLibraryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */; };
+		CC2464AD2A4545DE00C40E83 /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */; };
 		CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30832A428C820074C325 /* LokaLanApp.swift */; };
 		CCAD30862A428C820074C325 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30852A428C820074C325 /* ContentView.swift */; };
 		CCAD30882A428C830074C325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAD30872A428C830074C325 /* Assets.xcassets */; };
 		CCAD308B2A428C830074C325 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAD308A2A428C830074C325 /* Preview Assets.xcassets */; };
-		CCAD308D2A428C830074C325 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD308C2A428C830074C325 /* Persistence.swift */; };
 		CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30A62A429E930074C325 /* CoreDataManager.swift */; };
 		CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30A82A429FED0074C325 /* UserViewModel.swift */; };
 		CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30AA2A42A0E10074C325 /* LokaLan.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC1F6E982A44031A00601299 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 1; path = WordViewModel.swift; sourceTree = "<group>"; };
+		CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryView.swift; sourceTree = "<group>"; };
+		CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryAddView.swift; sourceTree = "<group>"; };
+		CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		CCAD30802A428C820074C325 /* LokaLan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LokaLan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCAD30832A428C820074C325 /* LokaLanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LokaLanApp.swift; sourceTree = "<group>"; };
 		CCAD30852A428C820074C325 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CCAD30872A428C830074C325 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCAD308A2A428C830074C325 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CCAD308C2A428C830074C325 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CCAD30912A428C830074C325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCAD30A62A429E930074C325 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CCAD30A82A429FED0074C325 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -67,7 +73,6 @@
 				CCAD30832A428C820074C325 /* LokaLanApp.swift */,
 				CCAD30852A428C820074C325 /* ContentView.swift */,
 				CCAD30872A428C830074C325 /* Assets.xcassets */,
-				CCAD308C2A428C830074C325 /* Persistence.swift */,
 				CCAD30912A428C830074C325 /* Info.plist */,
 				CCAD30AA2A42A0E10074C325 /* LokaLan.xcdatamodeld */,
 				CCAD30892A428C830074C325 /* Preview Content */,
@@ -93,6 +98,9 @@
 		CCAD30A32A429DF80074C325 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */,
+				CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */,
+				CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -101,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CCAD30A82A429FED0074C325 /* UserViewModel.swift */,
+				CC1F6E982A44031A00601299 /* WordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -183,12 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC1F6E9D2A440A5600601299 /* LocalLibraryAddView.swift in Sources */,
+				CC1F6E9B2A4407B600601299 /* LocalLibraryView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
-				CCAD308D2A428C830074C325 /* Persistence.swift in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
+				CC2464AD2A4545DE00C40E83 /* WordDetailView.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
+				CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
