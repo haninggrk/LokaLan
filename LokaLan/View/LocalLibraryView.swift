@@ -47,7 +47,7 @@ struct LocalLibraryView: View {
                             }
                         }
                     }.navigationDestination(for: WordModel.self) { word in
-                        WordDetailView(word: word)
+                        WordDetailView2(word: word)
                     }
                     Button{
                         wordList.fetchWordFromAPI()

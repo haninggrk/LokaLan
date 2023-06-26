@@ -138,6 +138,8 @@ class WordViewModel: ObservableObject{
             } catch {
                 print("Error decoding JSON: \(error)")
             }
+            
+            
         }.resume()
     }
  

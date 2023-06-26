@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct LocalLibraryAddView: View {
+struct LibraryAddEditView: View {
+    
     @StateObject private var wordList = WordViewModel.shared
     @State var isRecording = false
     @Environment(\.dismiss) private var dismiss
@@ -17,6 +18,7 @@ struct LocalLibraryAddView: View {
             TextField("Input kata",text: $wordList.name).textFieldStyle(RoundedBorderTextFieldStyle())
             TextField("Input arti",text: $wordList.meaning).textFieldStyle(RoundedBorderTextFieldStyle())
             TextField("Input description",text: $wordList.desc).textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Input Meaning",text: $wordList.meaning).textFieldStyle(RoundedBorderTextFieldStyle())
             Button{
                 if(isRecording){
                     wordList.stopRecording()
@@ -45,6 +47,6 @@ struct LocalLibraryAddView: View {
 
 struct LocalLibraryAddView_Previews: PreviewProvider {
     static var previews: some View {
-        LocalLibraryAddView()
+        LibraryAddEditView()
     }
 }

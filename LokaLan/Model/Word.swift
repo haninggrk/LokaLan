@@ -40,6 +40,9 @@ struct WordModel: Hashable{
     var is_published: Bool{
         return word.is_published
     }
+    var meaning: String{
+        return word.meaning ?? ""
+    }
     
 }
 

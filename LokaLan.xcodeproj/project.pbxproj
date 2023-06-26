@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E982A44031A00601299 /* WordViewModel.swift */; };
-		CC1F6E9B2A4407B600601299 /* LocalLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */; };
-		CC1F6E9D2A440A5600601299 /* LocalLibraryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */; };
-		CC2464AD2A4545DE00C40E83 /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */; };
+		CC1F6E9D2A440A5600601299 /* LibraryAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */; };
+		CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7916C2A49B27B00CACC8F /* WordCardView.swift */; };
+		CCA7916F2A49B4D200CACC8F /* WordLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7916E2A49B4D200CACC8F /* WordLibraryView.swift */; };
+		CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA791702A49B50300CACC8F /* RoundedCorner.swift */; };
+		CCA791732A49B58A00CACC8F /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA791722A49B58A00CACC8F /* WordDetailView.swift */; };
 		CCA89B8D2A492897006418FB /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA89B8C2A492897006418FB /* Word.swift */; };
 		CCA89B8F2A492FA3006418FB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA89B8E2A492FA3006418FB /* Extension.swift */; };
 		CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30832A428C820074C325 /* LokaLanApp.swift */; };
@@ -24,9 +26,11 @@
 
 /* Begin PBXFileReference section */
 		CC1F6E982A44031A00601299 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 1; path = WordViewModel.swift; sourceTree = "<group>"; };
-		CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryView.swift; sourceTree = "<group>"; };
-		CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryAddView.swift; sourceTree = "<group>"; };
-		CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
+		CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAddEditView.swift; sourceTree = "<group>"; };
+		CCA7916C2A49B27B00CACC8F /* WordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardView.swift; sourceTree = "<group>"; };
+		CCA7916E2A49B4D200CACC8F /* WordLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLibraryView.swift; sourceTree = "<group>"; };
+		CCA791702A49B50300CACC8F /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		CCA791722A49B58A00CACC8F /* WordDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WordDetailView.swift; path = ../../../../../Downloads/cobaCoreML/cobaCoreML/WordDetailView.swift; sourceTree = "<group>"; };
 		CCA89B8C2A492897006418FB /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CCA89B8E2A492FA3006418FB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CCAD30802A428C820074C325 /* LokaLan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LokaLan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCA7916B2A49B26A00CACC8F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CCA7916C2A49B27B00CACC8F /* WordCardView.swift */,
+				CCA791702A49B50300CACC8F /* RoundedCorner.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		CCAD30772A428C820074C325 = {
 			isa = PBXGroup;
 			children = (
@@ -103,9 +116,10 @@
 		CCAD30A32A429DF80074C325 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */,
-				CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */,
-				CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */,
+				CCA7916B2A49B26A00CACC8F /* Components */,
+				CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */,
+				CCA791722A49B58A00CACC8F /* WordDetailView.swift */,
+				CCA7916E2A49B4D200CACC8F /* WordLibraryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,15 +212,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC1F6E9D2A440A5600601299 /* LocalLibraryAddView.swift in Sources */,
-				CC1F6E9B2A4407B600601299 /* LocalLibraryView.swift in Sources */,
+				CC1F6E9D2A440A5600601299 /* LibraryAddEditView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CCA89B8F2A492FA3006418FB /* Extension.swift in Sources */,
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
+				CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */,
+				CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
-				CC2464AD2A4545DE00C40E83 /* WordDetailView.swift in Sources */,
+				CCA7916F2A49B4D200CACC8F /* WordLibraryView.swift in Sources */,
 				CCA89B8D2A492897006418FB /* Word.swift in Sources */,
+				CCA791732A49B58A00CACC8F /* WordDetailView.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
 				CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */,
 			);
