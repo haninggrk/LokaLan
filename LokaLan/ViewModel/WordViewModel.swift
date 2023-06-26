@@ -14,7 +14,7 @@ class WordViewModel: ObservableObject{
     
     @Published var audioRecorder: AVAudioRecorder?
     @Published var words: [WordModel] = []
-    
+    @Published var fetchedWords:[WordData] = []
     
     
     
@@ -36,6 +36,7 @@ class WordViewModel: ObservableObject{
     
     init(){
         getAllWords()
+        fetchWordFromAPI()
     }
     func save(){
         let word = Word(context: CoreDataManager.shared.viewContext)
@@ -45,6 +46,8 @@ class WordViewModel: ObservableObject{
         word.audio_path = audio_path
         word.downvote = downvote
         word.upvote = upvote
+        word.is_local = true;
+        word.is_published = false;
         CoreDataManager.shared.save()
     }
     
@@ -100,34 +103,54 @@ class WordViewModel: ObservableObject{
             print(error.localizedDescription)
         }
     }
+    struct APIResponse: Codable {
+        let success: Bool
+        let data: [WordData]
+    }
+
+    
+    
+    
+        
+        
+    func fetchWordFromAPI() {
+        let url = "http://127.0.0.1:8000/words/"
+        let request = URLRequest(url: URL(string: url)!)
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+            
+            guard let jsonData = data else {
+                print("No data received")
+                return
+            }
+            
+            do {
+                let apiResponse = try JSONDecoder().decode(APIResponse.self, from: jsonData)
+                DispatchQueue.main.async {
+                    print("Received API response:")
+                    print(apiResponse)
+                    self.fetchedWords = apiResponse.data
+                }
+            } catch {
+                print("Error decoding JSON: \(error)")
+            }
+        }.resume()
+    }
+ 
+
+
+
+
+
+
+
     
     
     
 }
-    struct WordModel: Hashable{
-        let word:Word
-        var id: NSManagedObjectID{
-            return word.objectID
-        }
-        var name: String{
-            return word.word ?? ""
-        }
-        
-        var desc: String{
-            return word.desc ?? ""
-        }
-        
-        var audio_path:String{
-            return word.audio_path ?? ""
-        }
-        
-        var downvote: Int16{
-            return word.downvote
-        }
-        
-        var upvote: Int16{
-            return word.upvote
-        }
-        
-    }
+
 

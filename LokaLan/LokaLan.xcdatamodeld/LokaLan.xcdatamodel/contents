@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="UsageExample" representedClassName="UsageExample" syncable="YES" codeGenerationType="class">
+        <attribute name="example" optional="YES" attributeType="String"/>
+        <relationship name="belongsToWord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="hasUsageExamples" inverseEntity="Word"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="audio_url" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="profile_img" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="hasWords" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="belongsToUser" inverseEntity="Word"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
         <attribute name="audio_path" optional="YES" attributeType="String"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="downvote" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="is_local" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="is_published" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="upvote" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasWords" inverseEntity="User"/>
+        <relationship name="hasUsageExamples" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UsageExample" inverseName="belongsToWord" inverseEntity="UsageExample"/>
     </entity>
 </model>

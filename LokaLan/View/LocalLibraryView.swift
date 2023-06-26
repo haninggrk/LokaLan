@@ -27,26 +27,58 @@ struct LocalLibraryView: View {
                     Text("Local").tag(0)
                     Text("Global").tag(1)
                 }.pickerStyle(.segmented)
-                List{
-                    ForEach(wordList.words, id: \.id){ word in
-                        NavigationLink(value: word){
-                            HStack{
-                                Text(word.name)
-                                Text("| Desc: \(word.desc)")
-                                Spacer()
-                                Image(systemName: "x.circle").foregroundColor(.red).onTapGesture {
-                                    wordList.delete(word: word)
-                                    wordList.getAllWords()
+                if(submenu == 0){
+                    
+                    
+                    List{
+                        ForEach(wordList.words, id: \.id){ word in
+                            NavigationLink(value: word){
+                                HStack{
+                                    Text(word.name)
+                                    Text("| Desc: \(word.desc)")
+                                    Spacer()
+                                    Image(systemName: "x.circle").foregroundColor(.red).onTapGesture {
+                                        wordList.delete(word: word)
+                                        wordList.getAllWords()
+                                    }
                                 }
+                                
+                                
                             }
-                            
-                            
                         }
+                    }.navigationDestination(for: WordModel.self) { word in
+                        WordDetailView(word: word)
                     }
-                }.navigationDestination(for: WordModel.self) { word in
-                    WordDetailView(word: word)
+                    Button{
+                        wordList.fetchWordFromAPI()
+                        print(wordList.fetchedWords)
+                    }label: {
+                        Text("Fetch")
+                        
+                    }
+                }else{
+                    List{
+                        ForEach(wordList.fetchedWords, id: \.id){ word in
+                            NavigationLink(value: word){
+                                HStack{
+                                    Text("word: \(word.word)")
+                                    Text("| Desc: \(word.description)")
+                                    Spacer()
+                                    Image(systemName: "x.circle").foregroundColor(.red).onTapGesture {
+                             
+                                        wordList.fetchWordFromAPI()
+                                    }
+                                }
+                                
+                                
+                            }
+                        }
+                    }.onAppear{
+                        wordList.fetchWordFromAPI()
+                    }
+            
                 }
-        
+
             }.sheet(isPresented: $isAddingWord, content: {
                 LocalLibraryAddView()
             }).navigationTitle("Words")

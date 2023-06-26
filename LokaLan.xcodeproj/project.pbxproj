@@ -11,6 +11,8 @@
 		CC1F6E9B2A4407B600601299 /* LocalLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */; };
 		CC1F6E9D2A440A5600601299 /* LocalLibraryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */; };
 		CC2464AD2A4545DE00C40E83 /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */; };
+		CCA89B8D2A492897006418FB /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA89B8C2A492897006418FB /* Word.swift */; };
+		CCA89B8F2A492FA3006418FB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA89B8E2A492FA3006418FB /* Extension.swift */; };
 		CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30832A428C820074C325 /* LokaLanApp.swift */; };
 		CCAD30862A428C820074C325 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD30852A428C820074C325 /* ContentView.swift */; };
 		CCAD30882A428C830074C325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAD30872A428C830074C325 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		CC1F6E9A2A4407B600601299 /* LocalLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryView.swift; sourceTree = "<group>"; };
 		CC1F6E9C2A440A5600601299 /* LocalLibraryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryAddView.swift; sourceTree = "<group>"; };
 		CC2464AC2A4545DE00C40E83 /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
+		CCA89B8C2A492897006418FB /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		CCA89B8E2A492FA3006418FB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CCAD30802A428C820074C325 /* LokaLan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LokaLan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCAD30832A428C820074C325 /* LokaLanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LokaLanApp.swift; sourceTree = "<group>"; };
 		CCAD30852A428C820074C325 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 		CCAD30A22A429DEF0074C325 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CCA89B8C2A492897006418FB /* Word.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				CCAD30A62A429E930074C325 /* CoreDataManager.swift */,
+				CCA89B8E2A492FA3006418FB /* Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -196,9 +202,11 @@
 				CC1F6E9B2A4407B600601299 /* LocalLibraryView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
+				CCA89B8F2A492FA3006418FB /* Extension.swift in Sources */,
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
 				CC2464AD2A4545DE00C40E83 /* WordDetailView.swift in Sources */,
+				CCA89B8D2A492897006418FB /* Word.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
 				CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */,
 			);
