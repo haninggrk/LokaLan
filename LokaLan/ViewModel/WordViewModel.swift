@@ -8,15 +8,19 @@
 import Foundation
 import AVFoundation
 import CoreData
-import AVFoundation
 
 class WordViewModel: ObservableObject{
+    var timer:Timer = Timer()
+    private var currentSample: Int
+    private let numberOfSamples = 20
     
     @Published var audioRecorder: AVAudioRecorder?
     @Published var words: [WordModel] = []
     @Published var fetchedWords:[WordData] = []
+    @Published public var soundSamples: [Float]
     
     
+
     
     
     static var shared:WordViewModel = WordViewModel()
@@ -33,13 +37,10 @@ class WordViewModel: ObservableObject{
         words = CoreDataManager.shared.getAllWords().map(WordModel.init)
     }
     
-    
-    init(){
-        getAllWords()
-        fetchWordFromAPI()
-    }
+
     func save(){
         let word = Word(context: CoreDataManager.shared.viewContext)
+    
         word.word = name
         word.meaning = meaning
         word.desc = desc
@@ -50,7 +51,14 @@ class WordViewModel: ObservableObject{
         word.is_published = false;
         CoreDataManager.shared.save()
     }
-    
+    init(){
+
+        self.soundSamples = [Float](repeating: .zero, count: numberOfSamples)
+        self.currentSample = 0
+        getAllWords()
+        fetchWordFromAPI()
+    }
+
     
     func delete(word:WordModel){
         let existingWord = CoreDataManager.shared.getWordById(id: word.id)
@@ -82,13 +90,16 @@ class WordViewModel: ObservableObject{
         audioURL = documentsPath.appendingPathComponent(fileName)
         do {
             audioRecorder = try AVAudioRecorder(url: audioURL!, settings: audioSettings)
-            audioRecorder!.record()
+            audioRecorder?.isMeteringEnabled = true
+            audioRecorder?.record()
+            startMonitoring()
         } catch {
             print("Failed to create audio recorder: \(error.localizedDescription)")
         }
     }
-    
+
     func stopRecording() {
+        timer.invalidate()
         audioRecorder?.stop()
         guard let audioURL = audioURL else { return }
         do{
@@ -108,7 +119,15 @@ class WordViewModel: ObservableObject{
         let data: [WordData]
     }
 
-    
+    private func startMonitoring() {
+     
+        timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: { (timer) in
+            // 7
+            self.audioRecorder?.updateMeters()
+            self.soundSamples[self.currentSample] = (self.audioRecorder?.averagePower(forChannel: 0))!
+            self.currentSample = (self.currentSample + 1) % self.numberOfSamples
+        })
+    }
     
     
         

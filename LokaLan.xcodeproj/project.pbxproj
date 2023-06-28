@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD62A4A760D0058113C /* WordAddEditView.swift */; };
+		CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD82A4A82960058113C /* CustomTextField.swift */; };
+		CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */; };
+		CC13EADE2A4A8ED10058113C /* SimpleAudioWaveIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = CC13EADD2A4A8ED10058113C /* SimpleAudioWaveIndicator */; };
 		CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E982A44031A00601299 /* WordViewModel.swift */; };
 		CC1F6E9D2A440A5600601299 /* LibraryAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */; };
 		CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7916C2A49B27B00CACC8F /* WordCardView.swift */; };
@@ -25,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC13EAD62A4A760D0058113C /* WordAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAddEditView.swift; sourceTree = "<group>"; };
+		CC13EAD82A4A82960058113C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		CC1F6E982A44031A00601299 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 1; path = WordViewModel.swift; sourceTree = "<group>"; };
 		CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAddEditView.swift; sourceTree = "<group>"; };
 		CCA7916C2A49B27B00CACC8F /* WordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardView.swift; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC13EADE2A4A8ED10058113C /* SimpleAudioWaveIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +68,8 @@
 			children = (
 				CCA7916C2A49B27B00CACC8F /* WordCardView.swift */,
 				CCA791702A49B50300CACC8F /* RoundedCorner.swift */,
+				CC13EAD82A4A82960058113C /* CustomTextField.swift */,
+				CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -120,6 +130,7 @@
 				CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */,
 				CCA791722A49B58A00CACC8F /* WordDetailView.swift */,
 				CCA7916E2A49B4D200CACC8F /* WordLibraryView.swift */,
+				CC13EAD62A4A760D0058113C /* WordAddEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +169,9 @@
 			dependencies = (
 			);
 			name = LokaLan;
+			packageProductDependencies = (
+				CC13EADD2A4A8ED10058113C /* SimpleAudioWaveIndicator */,
+			);
 			productName = LokaLan;
 			productReference = CCAD30802A428C820074C325 /* LokaLan.app */;
 			productType = "com.apple.product-type.application";
@@ -186,6 +200,9 @@
 				Base,
 			);
 			mainGroup = CCAD30772A428C820074C325;
+			packageReferences = (
+				CC13EADC2A4A8ED10058113C /* XCRemoteSwiftPackageReference "SimpleAudioWaveIndicator" */,
+			);
 			productRefGroup = CCAD30812A428C820074C325 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -220,11 +237,14 @@
 				CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */,
 				CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
+				CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */,
+				CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */,
 				CCA7916F2A49B4D200CACC8F /* WordLibraryView.swift in Sources */,
 				CCA89B8D2A492897006418FB /* Word.swift in Sources */,
 				CCA791732A49B58A00CACC8F /* WordDetailView.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
 				CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */,
+				CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +445,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC13EADC2A4A8ED10058113C /* XCRemoteSwiftPackageReference "SimpleAudioWaveIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/allen870619/SimpleAudioWaveIndicator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC13EADD2A4A8ED10058113C /* SimpleAudioWaveIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC13EADC2A4A8ED10058113C /* XCRemoteSwiftPackageReference "SimpleAudioWaveIndicator" */;
+			productName = SimpleAudioWaveIndicator;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CCAD30AA2A42A0E10074C325 /* LokaLan.xcdatamodeld */ = {
