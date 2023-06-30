@@ -27,7 +27,7 @@ class WordViewModel: ObservableObject{
     
     var name: String = ""
     var meaning: String = ""
-    var desc: String = ""
+    @Published var desc: String = ""
     var audio_path: String = ""
     var downvote: Int16 = 0
     var upvote: Int16 = 0
@@ -53,7 +53,7 @@ class WordViewModel: ObservableObject{
     }
     init(){
 
-        self.soundSamples = [Float](repeating: .zero, count: numberOfSamples)
+        self.soundSamples = [Float](repeating: -20, count: numberOfSamples)
         self.currentSample = 0
         getAllWords()
         fetchWordFromAPI()

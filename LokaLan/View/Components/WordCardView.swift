@@ -8,7 +8,7 @@
 import SwiftUI
 import AVFoundation
 struct WordCardView: View {
-    var word: WordModel 
+//    var word: WordModel
     @State private var player: AVPlayer?
     func playAudio(url:String) {
         guard let url = URL(string: "\(url)") else {
@@ -20,55 +20,34 @@ struct WordCardView: View {
         player?.play()
     }
     var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("\(word.name)")
-                            .font(.title3)
-                            .foregroundColor(Color(.black))
-                            .bold()
-                        Text("\(word.meaning)")
-                            .font(.caption)
-                            .foregroundColor(.black)
-                    }
-                    .padding()
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                    Spacer()
-                }
-                .frame(width: 320, height: 80)
-                .background(.white)
-                .cornerRadius(20)
-                .padding(.horizontal,10)
-                .shadow(color: Color.gray.opacity(0.4), radius: 3, x: 1, y: 2)
+      
+        VStack{
+            HStack{
+                VStack(alignment: .leading){
+                    Text("Kon").font(.title.weight(.bold))
+                    Text("Kamu").font(.headline.weight(.light))
+                }.foregroundColor(.black)
+                Spacer()
+                Image(systemName: "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(.blue)
+            }.padding(.bottom,15)
+            HStack{
+              
+                SmallButton(label: "Widget", systemImage: "pin", color: Color.blue)
+                SmallButton(label: "Global", systemImage: "globe", color: Color.blue)
+                Spacer()
+                SmallButton(label: "Delete", systemImage: "trash", color: Color.red)
                 
-               
-                    HStack {
-                        Spacer()
-                        ZStack {
-                            Circle()
-                                .fill(Color("BgWhite"))
-                                .frame(width: 58, height: 58)
-                            Circle()
-                                .fill(Color("BgOrange"))
-                                .frame(width: 48, height: 48)
-                            Image(systemName: "speaker.wave.2")
-                                .bold()
-                        }.onTapGesture {
-                            print("hllo")
-                            playAudio(url: word.audio_path)
-                        }
-                    }
-                    .padding(.bottom,40)
                 
-                .foregroundColor(Color(.black))
-                
-            }
-        }
-        .padding(.leading)
-        .padding(.trailing, 30)
+            }.font(.footnote).bold()
+        }.padding(20).background(.white).cornerRadius(10).shadow(radius: 1)
     }
 }
 
 
+struct WordCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack{
+            WordCardView().padding(32)
+        }
+    }
+}

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WordAddEditView: View {
-
+    
     @StateObject private var wordList = WordViewModel.shared
     @State var isRecording = false
     @Environment(\.dismiss) private var dismiss
@@ -18,19 +18,22 @@ struct WordAddEditView: View {
         
         return CGFloat(level * (150 / 25)) // scaled to max at 300 (our height of our bar)
     }
+    
+    
     var body: some View {
         NavigationView{
             
             VStack(alignment:.leading){
                 Group{
                     Text("Kata").bold()
-                    CustomTextField(text: $wordList.name, placeholder: "masukkan kata")
+                    CustomTextField(text: $wordList.name, placeholder: "Masukkan kata")
                     Text("Arti").bold()
-                    CustomTextField(text: $wordList.meaning, placeholder: "masukkan penjelasan kata")
+                    CustomTextField(text: $wordList.meaning, placeholder: "Masukkan arti kata")
                     Text("Definisi").bold()
-                    CustomTextEditor(text: $wordList.desc)
+                    CustomTextEditor(text: $wordList.desc,placeholderString: "Masukkan definisi kata")
                     Text("Contoh").bold()
-                    CustomTextEditor(text: $wordList.desc)
+                    CustomTextEditor(text: $wordList.desc,placeholderString: "Masukkan contoh penggunaan kata")
+                   
                     HStack() {
                         Spacer()
                         ForEach(wordList.soundSamples, id: \.self) { level in
@@ -42,7 +45,7 @@ struct WordAddEditView: View {
                                 wordList.stopRecording()
                             }else{
                                 wordList.startRecording()
-                         
+                                
                             }
                             isRecording.toggle()
                             
@@ -51,19 +54,25 @@ struct WordAddEditView: View {
                             Image(systemName: isRecording ? "stop": "mic").resizable().frame(width:  isRecording ? 30:20,height: 30).padding(5).background(.clear).cornerRadius(100)
                         }
                         Spacer()
-                    }.padding(10).background(Color("LightGray")).cornerRadius(20)
+                    }.padding(10
+                    )
+                    .frame(maxHeight: 100)
+
+                    .background(Color("LightGray")
+                    ).cornerRadius(20).padding(.top,10)
                     
                     
                 }
-              
-      
-
-            
+                
+                
+                
+                
                 
                 Spacer()
                 
                 
             }.padding(20)
+           
             
                 .toolbar{
                     
@@ -97,7 +106,7 @@ struct WordAddEditView: View {
     }
     struct BarView: View {
         var value: CGFloat
-
+        
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
@@ -106,7 +115,7 @@ struct WordAddEditView: View {
             }
         }
     }
-
+    
 }
 
 

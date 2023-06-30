@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CustomTextField: View {
     @Binding var text: String
-    @State var placeholder: String
+    var placeholder: String
     
     var body: some View {
         ZStack(alignment: .leading) {
  
-            TextField("", text: $text)
+            TextField("\(placeholder)", text: $text)
                 .padding(10)
                 .background(Color("LightGray"))
                 .cornerRadius(8)

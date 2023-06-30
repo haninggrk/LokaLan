@@ -15,63 +15,33 @@ struct WordLibraryView: View {
     @State private var isOpenProfile = false
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
-    @State private var submenu = 0
-
+    @State var submenu: Int = 0
+    
     var body: some View {
         NavigationStack {
             VStack {
-                VStack {
-                    Text("Kosakata")
-                        .foregroundColor(.white)
-                        .font(.title.bold())
-                        .accessibilityAddTraits(.isHeader)
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        TextField("Cari", text: $searchText)
-                            .foregroundColor(Color.black)
-                        Button(action: {
-                            print("Add Rooms")
-                        }) {
-                            Image(systemName: "mic")
-                        }
-                    }
-                    .padding()
-                    .frame(width: .infinity, height: 35)
-                    .background(Color(.white))
-                    .cornerRadius(15)
-                    .foregroundColor(.black)
-                    .padding(.horizontal, 45)
-                    .padding(.bottom, 20)
-                    HStack{
+                VStack{
+                    
+                    VStack(alignment: .leading){
+                        Text("Kosakata").font(.largeTitle.weight(.bold)).foregroundColor(.white).padding(.bottom,-1)
                         HStack {
-                            Spacer()
+                            Image(systemName: "magnifyingglass")
+                            TextField("Cari", text: $searchText)
+                                .foregroundColor(Color.black)
                             Button(action: {
-                                
+                                print("Add Rooms")
                             }) {
-                                Text("Lokal")
-                                    .bold()
+                                Image(systemName: "mic")
                             }
+                        } .padding(.horizontal)
+                            .frame(width: .infinity, height: 40)
+                            .background(Color(.white))
+                            .cornerRadius(5)
                             .foregroundColor(.black)
-                            Spacer()
-                            
-                        }
-                        .padding(.vertical,20)
-                        .background(RoundedCorners(color: Color("BgWhite"),bgcolor: .white.opacity(0), tl: 0, tr: 30, bl: 0, br: 0))
-                        
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                
-                            }) {
-                                Text("Global")
-                                    .bold()
-                            }
-                            .foregroundColor(Color(.white))
-                            Spacer()
-                        }
-                        .padding(.vertical,20)
-                        .background(RoundedCorners(color: Color("BgPurple2"),bgcolor: Color("BgWhite"), tl: 0, tr: 0, bl: 30, br: 0))
-                    }.edgesIgnoringSafeArea(.all)
+                    }
+                    .padding(.horizontal, 32)
+                    .padding(.bottom, 20)
+                    SegmentControlView(submenu: $submenu)
                 }
                 .background(
                     LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom)
@@ -100,30 +70,22 @@ struct WordLibraryView: View {
                                     NavigationLink(){
                                         WordDetailView(word: word)
                                     }label:{
-                                        WordCardView(word: word)
-                                    }
+                                        WordCardView()
+                                    }.padding(.vertical,3)
                                 }
-
+                                
                             }.navigationDestination(for: WordModel.self) { word in
                                 WordDetailView(word: word)
-                            }
+                                
+                            }.padding(.horizontal,32)
                         }
                     }
                 }
             }
+            
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        isEditWord = true
-                    }) {
-                        Label("Edit", systemImage: "pencil")
-                    }
-                    .foregroundColor(Color(.white))
-                    .sheet(isPresented: $isEditWord){
-                        WordDetailView(word: WordViewModel.shared.words[0])
-                    }
-                }
+                
                 ToolbarItem(placement: .automatic) {
                     Button(action: {
                         isAddWord = true
@@ -132,7 +94,8 @@ struct WordLibraryView: View {
                     }
                     .foregroundColor(Color(.white))
                     .sheet(isPresented: $isAddWord){
-                        LibraryAddEditView()
+                        WordAddEditView()        .presentationDetents([.fraction(0.98)])
+
                     }
                 }
                 ToolbarItem(placement: .automatic) {

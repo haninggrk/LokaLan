@@ -43,6 +43,9 @@ struct WordModel: Hashable{
     var meaning: String{
         return word.meaning ?? ""
     }
+    var usage_examples: String{
+        return word.usage_examples ?? ""
+    }
     
 }
 
@@ -57,5 +60,5 @@ struct WordData: Codable, Hashable {
     var user_id: Int
     var created_at: String
     var updated_at: String
-    var usage_examples: [String]
+    var usage_examples: String
 }
