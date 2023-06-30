@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "simpleaudiowaveindicator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/allen870619/SimpleAudioWaveIndicator.git",
+      "state" : {
+        "revision" : "5949b438c01fc2dbbca675962c2dbefa44a6f22c",
+        "version" : "0.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

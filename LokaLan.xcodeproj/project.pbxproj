@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301B95452A4E677C00E9B0F8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B95442A4E677C00E9B0F8 /* ProfileView.swift */; };
 		CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD62A4A760D0058113C /* WordAddEditView.swift */; };
 		CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD82A4A82960058113C /* CustomTextField.swift */; };
 		CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301B95442A4E677C00E9B0F8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CC13EAD62A4A760D0058113C /* WordAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAddEditView.swift; sourceTree = "<group>"; };
 		CC13EAD82A4A82960058113C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				CCA791722A49B58A00CACC8F /* WordDetailView.swift */,
 				CCA7916E2A49B4D200CACC8F /* WordLibraryView.swift */,
 				CC13EAD62A4A760D0058113C /* WordAddEditView.swift */,
+				301B95442A4E677C00E9B0F8 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				CCA791732A49B58A00CACC8F /* WordDetailView.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
 				CC5034D32A4BD5CF000EA890 /* SegmentControlView.swift in Sources */,
+				301B95452A4E677C00E9B0F8 /* ProfileView.swift in Sources */,
 				CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */,
 				CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */,
 			);
