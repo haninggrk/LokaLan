@@ -13,7 +13,6 @@
 		CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */; };
 		CC13EADE2A4A8ED10058113C /* SimpleAudioWaveIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = CC13EADD2A4A8ED10058113C /* SimpleAudioWaveIndicator */; };
 		CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E982A44031A00601299 /* WordViewModel.swift */; };
-		CC1F6E9D2A440A5600601299 /* LibraryAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */; };
 		CC5034D32A4BD5CF000EA890 /* SegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5034D22A4BD5CF000EA890 /* SegmentControlView.swift */; };
 		CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5034D42A4BE1FC000EA890 /* SmallButton.swift */; };
 		CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7916C2A49B27B00CACC8F /* WordCardView.swift */; };
@@ -37,7 +36,6 @@
 		CC13EAD82A4A82960058113C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		CC1F6E982A44031A00601299 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 1; path = WordViewModel.swift; sourceTree = "<group>"; };
-		CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAddEditView.swift; sourceTree = "<group>"; };
 		CC5034D22A4BD5CF000EA890 /* SegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlView.swift; sourceTree = "<group>"; };
 		CC5034D42A4BE1FC000EA890 /* SmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButton.swift; sourceTree = "<group>"; };
 		CCA7916C2A49B27B00CACC8F /* WordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardView.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				CCA7916B2A49B26A00CACC8F /* Components */,
-				CC1F6E9C2A440A5600601299 /* LibraryAddEditView.swift */,
 				CCA791722A49B58A00CACC8F /* WordDetailView.swift */,
 				CCA7916E2A49B4D200CACC8F /* WordLibraryView.swift */,
 				CC13EAD62A4A760D0058113C /* WordAddEditView.swift */,
@@ -238,7 +235,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC1F6E9D2A440A5600601299 /* LibraryAddEditView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */,

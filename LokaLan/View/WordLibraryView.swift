@@ -70,7 +70,7 @@ struct WordLibraryView: View {
                                     NavigationLink(){
                                         WordDetailView(word: word)
                                     }label:{
-                                        WordCardView()
+                                        WordCardView(word:word)
                                     }.padding(.vertical,3)
                                 }
                                 

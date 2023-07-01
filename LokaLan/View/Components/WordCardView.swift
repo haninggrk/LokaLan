@@ -8,8 +8,9 @@
 import SwiftUI
 import AVFoundation
 struct WordCardView: View {
-//    var word: WordModel
+    var word: WordModel
     @State private var player: AVPlayer?
+    
     func playAudio(url:String) {
         guard let url = URL(string: "\(url)") else {
             return
@@ -24,18 +25,29 @@ struct WordCardView: View {
         VStack{
             HStack{
                 VStack(alignment: .leading){
-                    Text("Kon").font(.title.weight(.bold))
-                    Text("Kamu").font(.headline.weight(.light))
+                    Text("\(word.name)").font(.title.weight(.bold))
+                    Text("\(word.meaning)").font(.headline.weight(.light))
                 }.foregroundColor(.black)
                 Spacer()
-                Image(systemName: "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(.blue)
+                Button{
+                    playAudio(url: word.audio_path)
+                }label: {
+                    Image(systemName: "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(.blue)
+                }
             }.padding(.bottom,15)
             HStack{
               
-                SmallButton(label: "Widget", systemImage: "pin", color: Color.blue)
-                SmallButton(label: "Global", systemImage: "globe", color: Color.blue)
+                SmallButton(label: "Widget", systemImage: "pin", color: Color.blue){
+                    
+                }
+                SmallButton(label: "Global", systemImage: "globe", color: Color.blue){
+                    
+                }
                 Spacer()
-                SmallButton(label: "Delete", systemImage: "trash", color: Color.red)
+                SmallButton(label: "Delete", systemImage: "trash", color: Color.red){
+                    WordViewModel.shared.delete(word: word)
+                    WordViewModel.shared.getAllWords()
+                }
                 
                 
             }.font(.footnote).bold()
@@ -44,10 +56,10 @@ struct WordCardView: View {
 }
 
 
-struct WordCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack{
-            WordCardView().padding(32)
-        }
-    }
-}
+//struct WordCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VStack{
+//            WordCardView().padding(32)
+//        }
+//    }
+//}
