@@ -11,9 +11,10 @@ struct SmallButton: View {
     var label:String
     var systemImage:String
     var color: Color
+    let action: () -> Void
     var body: some View {
         Button{
-            
+            action()
         }label: {
             HStack{
                 Text("\(label)")
@@ -30,6 +31,8 @@ struct SmallButton: View {
 
 struct SmallButton_Previews: PreviewProvider {
     static var previews: some View {
-        SmallButton(label: "Hello", systemImage: "globe",color: Color.blue)
+        SmallButton(label: "Hello", systemImage: "globe",color: Color.blue){
+            
+        }
     }
 }
