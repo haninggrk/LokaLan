@@ -11,7 +11,10 @@ struct SmallButton: View {
     var label:String
     var systemImage:String
     var color: Color
+    @Binding var is_activated: Bool
     let action: () -> Void
+    
+    
     var body: some View {
         Button{
             action()
@@ -21,7 +24,7 @@ struct SmallButton: View {
                 
                 Image(systemName: "\(systemImage)")
 
-            }.padding(.horizontal,8).padding(.vertical,5).background(.white)   .overlay(
+            }.padding(.horizontal,8).padding(.vertical,5).background(is_activated ? Color("SmallButtonLightBlue"):.white)   .overlay(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(color, lineWidth: 1)).foregroundColor(color)
         }
@@ -30,8 +33,10 @@ struct SmallButton: View {
 }
 
 struct SmallButton_Previews: PreviewProvider {
+    @State static var is_activated = true
+
     static var previews: some View {
-        SmallButton(label: "Hello", systemImage: "globe",color: Color.blue){
+        SmallButton(label: "Hello", systemImage: "globe",color: Color.blue,is_activated: $is_activated){
             
         }
     }

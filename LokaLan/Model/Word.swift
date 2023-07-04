@@ -34,11 +34,21 @@ struct WordModel: Hashable{
     }
     
     var is_local: Bool{
-        return word.is_local
+        set{
+            word.is_local = newValue
+        }
+        get{
+            return word.is_local
+        }
     }
     
     var is_published: Bool{
-        return word.is_published
+        set{
+            word.is_published = newValue
+        }
+        get{
+            return word.is_published
+        }
     }
     var meaning: String{
         return word.meaning ?? ""
@@ -46,19 +56,19 @@ struct WordModel: Hashable{
     var usage_examples: String{
         return word.usage_examples ?? ""
     }
+    var is_widget: Bool{
+        set{
+            word.is_widget = newValue
+        }
+        get{
+            return word.is_widget
+        }
+        
+    }
     
+    func save(){
+        WordViewModel.shared.update(word: self)
+    }
 }
 
-struct WordData: Codable, Hashable {
-    var id: Int
-    var word: String
-    var meaning: String
-    var description: String
-    var audio_path: String?
-    var upvote: Int
-    var downvote: Int
-    var user_id: Int
-    var created_at: String
-    var updated_at: String
-    var usage_examples: String
-}
+

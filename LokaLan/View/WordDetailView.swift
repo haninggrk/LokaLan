@@ -8,19 +8,8 @@
 import SwiftUI
 import AVFoundation
 struct WordDetailView: View {
+    @State var isEdit = false
     var word:WordModel
-    @State private var player: AVPlayer?
-    func playAudio(url:String) {
-        guard let url = URL(string: "\(url)") else {
-            return
-        }
-
-        let playerItem = AVPlayerItem(url: url)
-        player = AVPlayer(playerItem: playerItem)
-        player?.play()
-    }
-
-    
     var body: some View {
         ZStack {
             VStack{
@@ -44,12 +33,16 @@ struct WordDetailView: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .automatic) {
+                ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        
+                        isEdit = true
                     }) {
-                        Label("Profile", systemImage: "person.crop.circle")
-                    }.foregroundColor(Color(.white))
+                        Text("Ubah")
+                        
+                    }.foregroundColor(Color(.white)).sheet(isPresented: $isEdit){
+                        WordAddEditView(word: word)
+                    }
+                    
                 }
             }
             
@@ -57,10 +50,20 @@ struct WordDetailView: View {
                 ZStack {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("\(word.name)")
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(Color(.black))
+                            HStack{
+                                Text("\(word.name)")
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(Color(.black))
+                                Button(action: {
+                                    print(word.audio_path)
+                                    AudioPlayer.shared.playAudio(url: word.audio_path)
+                                }) {
+                                    Image(systemName: "speaker.wave.2.fill").bold()
+                                }
+                                .foregroundColor(Color(.blue))
+                            }
+                           
                             Spacer()
                             Text("\(word.meaning)")
                                 .font(.body)
@@ -71,34 +74,14 @@ struct WordDetailView: View {
                         .padding(.bottom)
                         Spacer()
                     }
-                    .frame(width: 340, height: 110)
+                    .frame(height: 110)
                     .background(.white)
                     .cornerRadius(20)
+                    .padding(.bottom,20)
+                    .padding(.top,20)
                     .padding(.horizontal,10)
                     
-                    Button(action: {
-                        print(word.audio_path)
-                        playAudio(url: word.audio_path)
-                    }) {
-                        HStack {
-                            Spacer()
-                            ZStack {
-                                Circle()
-                                    .fill(Color("BgPurple2"))
-                                    .frame(width: 78, height: 78)
-                                Circle()
-                                    .fill(Color("BgOrange"))
-                                    .frame(width: 68, height: 68)
-                                Image(systemName: "speaker.wave.2")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 22, height: 22)
-                                    .bold()
-                            }
-                        }
-                        .padding(.bottom,50)
-                    }
-                    .foregroundColor(Color(.black))
+         
                 }
                 HStack {
                     VStack(alignment: .leading) {
@@ -124,7 +107,7 @@ struct WordDetailView: View {
                             .italic()
                             .foregroundColor(.black)
                             .padding(.bottom)
-                        Text("1. “kamu kemana aja?” —— “kon nang ndi ae”")
+                        Text("\(word.usage_examples)")
                             .font(.body)
                             .italic()
                             .foregroundColor(.black)

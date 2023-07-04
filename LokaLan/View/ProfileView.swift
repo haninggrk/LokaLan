@@ -43,8 +43,11 @@ struct ProfileView: View {
                 .toolbar{
                     
                     ToolbarItem(placement:.primaryAction ){
-                        Text("Simpan").bold().foregroundColor(Color(.blue))
-                        
+                        Button{
+                            dismiss()
+                        }label: {
+                            Text("Simpan    ").bold().foregroundColor(Color(.blue))
+                        }
                     }
                     ToolbarItem(placement: .principal) {
                         ZStack {
@@ -54,7 +57,11 @@ struct ProfileView: View {
                         }
                     }
                     ToolbarItem(placement:.cancellationAction ){
-                        Text("Batal").bold().foregroundColor(Color(.blue))
+                        Button{
+                            dismiss()
+                        }label: {
+                            Text("Batal").bold().foregroundColor(Color(.blue))
+                        }
                     }
                     
                     

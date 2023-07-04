@@ -15,7 +15,7 @@ struct SegmentControlView: View {
             HStack {
                 Spacer()
                 Text("Lokal")
-                    .foregroundColor(submenu == 0 ? .blue:.white)
+                    .foregroundColor(submenu == 0 ? .blue:.white).bold()
                 Spacer()
                 
             }

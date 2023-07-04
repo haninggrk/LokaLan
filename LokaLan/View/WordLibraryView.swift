@@ -34,7 +34,7 @@ struct WordLibraryView: View {
                                 Image(systemName: "mic")
                             }
                         } .padding(.horizontal)
-                            .frame(width: .infinity, height: 40)
+                            .frame(height: 40)
                             .background(Color(.white))
                             .cornerRadius(5)
                             .foregroundColor(.black)
@@ -66,6 +66,7 @@ struct WordLibraryView: View {
                     ScrollView {
                         VStack{
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
+                                if(submenu == 0){
                                 ForEach(wordList.words, id: \.self) {word in
                                     NavigationLink(){
                                         WordDetailView(word: word)
@@ -73,9 +74,20 @@ struct WordLibraryView: View {
                                         WordCardView(word:word)
                                     }.padding(.vertical,3)
                                 }
+                                }else{
+                                    ForEach(wordList.fetchedWords, id: \.self) {word in
+                                        GlobalWordCardView(word: word)
+                                    }
+                                   
+                                    
+                                }
                                 
                             }.navigationDestination(for: WordModel.self) { word in
                                 WordDetailView(word: word)
+                                    .onAppear{
+                                        print(wordList.fetchedWords)
+                                        
+                                    }
                                 
                             }.padding(.horizontal,32)
                         }
@@ -89,12 +101,13 @@ struct WordLibraryView: View {
                 ToolbarItem(placement: .automatic) {
                     Button(action: {
                         isAddWord = true
+                        
                     }) {
                         Label("AddWord", systemImage: "plus")
                     }
                     .foregroundColor(Color(.white))
                     .sheet(isPresented: $isAddWord){
-                        WordAddEditView()        .presentationDetents([.fraction(0.98)])
+                        WordAddEditView()
 
                     }
                 }
@@ -106,7 +119,9 @@ struct WordLibraryView: View {
                     }
                     .foregroundColor(Color(.white))
                     .sheet(isPresented: $isOpenProfile){
-                        WordDetailView(word: WordViewModel.shared.words[0])                    }
+                        ProfileView()
+                        
+                    }
                 }
             }
             .background(Color("BgWhite"))

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct WordAddEditView: View {
     
+    @StateObject private var tempWord = WordViewModel()
     @StateObject private var wordList = WordViewModel.shared
+    @State var word:WordModel?
     @State var isRecording = false
     @Environment(\.dismiss) private var dismiss
     
@@ -19,32 +21,33 @@ struct WordAddEditView: View {
         return CGFloat(level * (150 / 25)) // scaled to max at 300 (our height of our bar)
     }
     
-    
+
+
     var body: some View {
         NavigationView{
             
             VStack(alignment:.leading){
                 Group{
                     Text("Kata").bold()
-                    CustomTextField(text: $wordList.name, placeholder: "Masukkan kata")
+                    CustomTextField(text:  $tempWord.name, placeholder: "Masukkan kata")
                     Text("Arti").bold()
-                    CustomTextField(text: $wordList.meaning, placeholder: "Masukkan arti kata")
+                    CustomTextField(text: $tempWord.meaning, placeholder: "Masukkan arti kata")
                     Text("Definisi").bold()
-                    CustomTextEditor(text: $wordList.desc,placeholderString: "Masukkan definisi kata")
+                    CustomTextEditor(text: $tempWord.desc,placeholderString: "Masukkan definisi kata")
                     Text("Contoh").bold()
-                    CustomTextEditor(text: $wordList.desc,placeholderString: "Masukkan contoh penggunaan kata")
-                   
+                    CustomTextEditor(text: $tempWord.usage_examples,placeholderString: "Masukkan contoh penggunaan kata")
+                    
                     HStack() {
                         Spacer()
-                        ForEach(wordList.soundSamples, id: \.self) { level in
+                        ForEach(tempWord.soundSamples, id: \.self) { level in
                             BarView(value: self.normalizeSoundLevel(level: level))
                         }
                         Spacer()
                         Button{
                             if(isRecording){
-                                wordList.stopRecording()
+                                tempWord.stopRecording()
                             }else{
-                                wordList.startRecording()
+                                tempWord.startRecording()
                                 
                             }
                             isRecording.toggle()
@@ -57,7 +60,7 @@ struct WordAddEditView: View {
                     }.padding(10
                     )
                     .frame(maxHeight: 100)
-
+                    
                     .background(Color("LightGray")
                     ).cornerRadius(20).padding(.top,10)
                     
@@ -72,18 +75,18 @@ struct WordAddEditView: View {
                 
                 
             }.padding(20)
-           
+            
             
                 .toolbar{
                     
                     ToolbarItem(placement:.primaryAction ){
                         Button{
-                            wordList.save()
+                            tempWord.save()
                             wordList.getAllWords()
                             dismiss()
                         }label:{
-                            Text("Simpan").bold().foregroundColor(Color(.blue))
-                        }
+                            Text("Simpan").bold().foregroundColor(Color(tempWord.name == "" || tempWord.meaning == "" ? .gray : .blue))
+                        }.disabled(tempWord.name == "" || tempWord.meaning == "")
                     }
                     ToolbarItem(placement: .principal) {
                         ZStack {
@@ -94,7 +97,11 @@ struct WordAddEditView: View {
                         }
                     }
                     ToolbarItem(placement:.cancellationAction ){
-                        Text("Batal").bold().foregroundColor(Color(.blue))
+                        Button{
+                            dismiss()
+                        }label: {
+                            Text("Batal").bold().foregroundColor(Color(.blue))
+                        }
                     }
                     
                     
