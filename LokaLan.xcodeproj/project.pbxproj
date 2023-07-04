@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		301B95452A4E677C00E9B0F8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B95442A4E677C00E9B0F8 /* ProfileView.swift */; };
+		301B95472A4E6C9200E9B0F8 /* SpeechToTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B95462A4E6C9200E9B0F8 /* SpeechToTextView.swift */; };
+		301B95492A4E72C900E9B0F8 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B95482A4E72C900E9B0F8 /* BarView.swift */; };
+		301B954B2A4E7DE500E9B0F8 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B954A2A4E7DE500E9B0F8 /* SpeechRecognizer.swift */; };
+		3086C2752A51BA4100449459 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3086C2742A51BA4100449459 /* SearchView.swift */; };
 		CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD62A4A760D0058113C /* WordAddEditView.swift */; };
 		CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD82A4A82960058113C /* CustomTextField.swift */; };
 		CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */; };
@@ -35,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		301B95442A4E677C00E9B0F8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		301B95462A4E6C9200E9B0F8 /* SpeechToTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextView.swift; sourceTree = "<group>"; };
+		301B95482A4E72C900E9B0F8 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		301B954A2A4E7DE500E9B0F8 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		3086C2742A51BA4100449459 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CC13EAD62A4A760D0058113C /* WordAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAddEditView.swift; sourceTree = "<group>"; };
 		CC13EAD82A4A82960058113C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
@@ -91,6 +99,9 @@
 				CC5034D22A4BD5CF000EA890 /* SegmentControlView.swift */,
 				CC5034D42A4BE1FC000EA890 /* SmallButton.swift */,
 				CC9C9C752A527AFB009CB9FA /* GlobalWordCardView.swift */,
+				301B95462A4E6C9200E9B0F8 /* SpeechToTextView.swift */,
+				301B95482A4E72C900E9B0F8 /* BarView.swift */,
+				3086C2742A51BA4100449459 /* SearchView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -141,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				CCA89B8C2A492897006418FB /* Word.swift */,
+				301B954A2A4E7DE500E9B0F8 /* SpeechRecognizer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9C9C742A525972009CB9FA /* WordResponse.swift in Sources */,
+				301B95492A4E72C900E9B0F8 /* BarView.swift in Sources */,
+				CC1F6E9D2A440A5600601299 /* LibraryAddEditView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */,
@@ -264,6 +278,9 @@
 				CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */,
 				CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */,
 				CCA7916F2A49B4D200CACC8F /* WordLibraryView.swift in Sources */,
+				3086C2752A51BA4100449459 /* SearchView.swift in Sources */,
+				301B954B2A4E7DE500E9B0F8 /* SpeechRecognizer.swift in Sources */,
+				301B95472A4E6C9200E9B0F8 /* SpeechToTextView.swift in Sources */,
 				CCA89B8D2A492897006418FB /* Word.swift in Sources */,
 				CC291F402A5066D70054FAD9 /* AudioPlayer.swift in Sources */,
 				CCA791732A49B58A00CACC8F /* WordDetailView.swift in Sources */,
@@ -404,6 +421,8 @@
 				DEVELOPMENT_TEAM = MBAFTNRS2X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -433,6 +452,8 @@
 				DEVELOPMENT_TEAM = MBAFTNRS2X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

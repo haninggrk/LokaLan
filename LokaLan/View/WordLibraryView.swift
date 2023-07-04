@@ -13,6 +13,7 @@ struct WordLibraryView: View {
     @State private var isAddWord = false
     @State private var isEditWord = false
     @State private var isOpenProfile = false
+    @State private var isOpenSpeech = false
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
@@ -24,20 +25,7 @@ struct WordLibraryView: View {
                     
                     VStack(alignment: .leading){
                         Text("Kosakata").font(.largeTitle.weight(.bold)).foregroundColor(.white).padding(.bottom,-1)
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            TextField("Cari", text: $searchText)
-                                .foregroundColor(Color.black)
-                            Button(action: {
-                                print("Add Rooms")
-                            }) {
-                                Image(systemName: "mic")
-                            }
-                        } .padding(.horizontal)
-                            .frame(height: 40)
-                            .background(Color(.white))
-                            .cornerRadius(5)
-                            .foregroundColor(.black)
+                        SearchView()
                     }
                     .padding(.horizontal, 32)
                     .padding(.bottom, 20)
