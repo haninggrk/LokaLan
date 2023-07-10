@@ -30,6 +30,7 @@ struct SwiftUIView: View {
                 } label: {
                     Text("Masuk")
                         .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 30)
                 }
                 .position(x: 180, y: 150)
                     .fontWeight(.semibold)

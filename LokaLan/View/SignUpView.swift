@@ -33,6 +33,7 @@ struct SignUpView: View {
                 } label: {
                     Text("Daftar")
                         .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 30)
                 }
                 .position(x: 180, y: 70)
                     .fontWeight(.semibold)
