@@ -10,6 +10,7 @@ import AVFoundation
 struct WordDetailView: View {
     @State var isEdit = false
     var word:WordModel
+    
     var body: some View {
         ZStack {
             VStack{
@@ -24,9 +25,9 @@ struct WordDetailView: View {
                     }
                 }
                 .padding(.top, 80)
-                .padding(.bottom, 150)
+                .padding(.bottom, 120)
                 .background(
-                    CustomCorners(color: LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom), tl: 0, tr: 0, bl: 120, br: 120)
+                    CustomCorners(color: LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom), tl: 0, tr: 0, bl: 100, br: 100)
                 )
                 Spacer()
             }
@@ -45,7 +46,7 @@ struct WordDetailView: View {
                     
                 }
             }
-            
+                    
             VStack {
                 ZStack {
                     HStack {
@@ -120,12 +121,12 @@ struct WordDetailView: View {
                 }
                 .background(.white)
                 .cornerRadius(20)
-                .padding(.horizontal,10)
+                .padding(.horizontal, 10)
                 Spacer()
             }
             .padding(.leading)
             .padding(.trailing, 20)
-            .padding(.top, 100)
+            .padding(.top, 30)
         }
         .background(Color("BgWhite"))
     }

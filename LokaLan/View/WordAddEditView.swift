@@ -54,12 +54,12 @@ struct WordAddEditView: View {
                             
                             
                         }label: {
-                            Image(systemName: isRecording ? "stop": "mic").resizable().frame(width:  isRecording ? 30:20,height: 30).padding(5).background(.clear).cornerRadius(100)
+                            Image(systemName: isRecording ? "stop": "mic").resizable().frame(width:  isRecording ? 30:20,height: 30).padding(5).background(.clear).cornerRadius(100).foregroundColor(Color("Blue"))
                         }
                         Spacer()
                     }.padding(10
                     )
-                    .frame(maxHeight: 100)
+                    .frame(maxHeight: 80)
                     
                     .background(Color("LightGray")
                     ).cornerRadius(20).padding(.top,10)
@@ -117,7 +117,7 @@ struct WordAddEditView: View {
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(.blue)
+                    .fill(Color("Blue"))
                     .frame(width: (UIScreen.main.bounds.width - CGFloat(20) * 11) / CGFloat(30), height: value)
             }
         }
