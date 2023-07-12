@@ -14,6 +14,8 @@ struct GlobalWordCardView: View {
     @State var word: WordData
     @ObservedObject var player = AudioPlayer()
     @StateObject private var wordViewmodel = WordViewModel.shared
+    @State private var showingDeleteAlert = false
+    
     var body: some View {
         VStack{
             HStack{
@@ -68,7 +70,15 @@ struct GlobalWordCardView: View {
                         Spacer()
                         
                         SmallButton(label: "Lokal", systemImage: "plus", color: Color("Blue"), is_activated: false){
-                            
+                            showingDeleteAlert = true
+                        }
+                        .alert("Hapus dari lokal ?", isPresented: $showingDeleteAlert) {
+                            Button("Ya", role: .destructive) {
+                                
+                            }
+                            Button("Tidak", role: .cancel) {
+                                
+                            }
                         }
                     }
                 }.foregroundColor(.black)
