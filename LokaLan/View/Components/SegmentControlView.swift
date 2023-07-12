@@ -38,6 +38,7 @@ struct SegmentControlView: View {
             .background(RoundedCorners(color: Color(submenu == 0 ?  "BgPurple2":"BgWhite"),bgcolor: Color(submenu == 0 ? "BgWhite":"BgPurple2"), tl: submenu == 1 ? 30:0, tr: 0, bl: submenu == 0 ? 30:0, br: 0))
             .onTapGesture{
                 submenu = 1
+                WordViewModel.shared.fetchWordFromAPI()
             }
             
             

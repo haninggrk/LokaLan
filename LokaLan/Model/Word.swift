@@ -25,11 +25,11 @@ struct WordModel: Hashable{
         return word.audio_path ?? ""
     }
     
-    var downvote: Int16{
+    var downvote: Int32{
         return word.downvote
     }
     
-    var upvote: Int16{
+    var upvote: Int32{
         return word.upvote
     }
     
@@ -41,14 +41,9 @@ struct WordModel: Hashable{
             return word.is_local
         }
     }
-    
     var is_published: Bool{
-        set{
-            word.is_published = newValue
-        }
         get{
-            return word.is_published
-        }
+            return word.published_id != 0        }
     }
     var meaning: String{
         return word.meaning ?? ""
@@ -63,11 +58,37 @@ struct WordModel: Hashable{
         get{
             return word.is_widget
         }
-        
+    }
+    
+    var published_id: Int32{
+        set{
+            word.published_id = (newValue) 
+        }get{
+            return word.published_id
+        }
     }
     
     func save(){
         WordViewModel.shared.update(word: self)
+    }
+    
+    func pushToGlobal(){
+        WordViewModel.shared.pushToGlobal(word: self, completionHandler: { p_id in
+            self.word.published_id = p_id
+            self.save()
+            WordViewModel.shared.getAllWords()
+
+        })
+        
+    }
+    
+    func unpublish(){
+        WordViewModel.shared.UnpublishWord(id: Int(self.published_id)) { success in
+            if(success){
+            }
+        }
+        self.word.published_id = 0
+        self.save()
     }
 }
 

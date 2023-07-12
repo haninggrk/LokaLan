@@ -11,7 +11,7 @@ struct SmallButton: View {
     var label:String
     var systemImage:String
     var color: Color
-    @Binding var is_activated: Bool
+    var is_activated: Bool
     let action: () -> Void
     
     
@@ -36,7 +36,7 @@ struct SmallButton_Previews: PreviewProvider {
     @State static var is_activated = true
 
     static var previews: some View {
-        SmallButton(label: "Hello", systemImage: "globe",color: Color.blue,is_activated: $is_activated){
+        SmallButton(label: "Hello", systemImage: "globe",color: Color.blue,is_activated: is_activated){
             
         }
     }
