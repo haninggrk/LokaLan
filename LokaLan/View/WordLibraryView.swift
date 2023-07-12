@@ -128,7 +128,7 @@ struct WordLibraryView: View {
                 .foregroundColor(Color(.white))
                 .sheet(isPresented: $isOpenProfile){
                     ProfileView()
-                    
+                        .presentationDetents([.large])
                 }
             }
         }

@@ -13,7 +13,7 @@ struct CustomTextField: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
- 
+            
             TextField("\(placeholder)", text: $text)
                 .padding(10)
                 .background(Color("LightGray"))
@@ -22,11 +22,6 @@ struct CustomTextField: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color("LightGray"), lineWidth: 2)
                 )
-                
-
-        
-
-            
         }
     }
 }

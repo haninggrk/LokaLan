@@ -20,14 +20,9 @@ struct CustomTextEditor: View {
                     Spacer()
                 }
             }
-   
-
-               
             TextEditor(text: $text).scrollContentBackground(.hidden).padding(10).background(Color(text.isEmpty ? "DarkGray":"LightGray")).cornerRadius(10).frame(width: .infinity,height: 100)
                 .opacity(text.isEmpty ? 0.08 : 1)
-
         }
-
     }
 }
 

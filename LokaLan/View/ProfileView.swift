@@ -15,57 +15,76 @@ struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        NavigationView{
-            
-            VStack {
-                Image(systemName:"person.crop.circle")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 120, height: 120)
-                    .cornerRadius(100)
-                    .clipped()
-                    .padding(.top, 40)
-                VStack(alignment:.leading){
-                    Group{
-                        Text("Nama").bold()
-                        CustomTextField(text: $userName, placeholder: "masukan nama")
-                        Text("Nama ID").bold()
-                        CustomTextField(text: $userId, placeholder: "masukkan nama ID")
-                        Text("Email").bold()
-                        CustomTextField(text: $userEmail, placeholder: "masukan email")
-                        Text("Password").bold()
-                        CustomTextField(text: $userPassword, placeholder: "masukan password")
+        VStack {
+            Capsule()
+                .fill(Color(uiColor: .darkGray))
+                .frame(width: 70, height: 3)
+                .padding(.vertical,10)
+            NavigationView {
+                ScrollView {
+                    VStack {
+                        VStack(alignment:.leading){
+                            Group{
+                                VStack {
+                                    HStack {
+                                        Text("Nama").font(.subheadline).bold()
+                                        Spacer()
+                                    }
+                                    CustomTextField(text: $userName, placeholder: "Masukan nama")
+                                }.padding(.bottom, 15)
+                                VStack {
+                                    HStack {
+                                        Text("Nama ID").font(.subheadline).bold()
+                                        Spacer()
+                                    }
+                                    CustomTextField(text: $userId, placeholder: "Masukkan nama ID")
+                                }.padding(.bottom, 15)
+                                VStack {
+                                    HStack {
+                                        Text("Email").font(.subheadline).bold()
+                                        Spacer()
+                                    }
+                                    CustomTextField(text: $userEmail, placeholder: "Masukan email")
+                                }.padding(.bottom, 15)
+                                VStack {
+                                    HStack {
+                                        Text("Password").font(.subheadline).bold()
+                                        Spacer()
+                                    }
+                                    CustomTextField(text: $userPassword, placeholder: "Masukan password")
+                                }.padding(.bottom, 15)
+                            }
+                            .padding(.horizontal)
+                            Spacer()
+                        }
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Text("Keluar").foregroundColor(Color(.red)).underline().padding(.bottom,40)
+                        }
                     }
-                    .padding(.horizontal)
-                    Spacer()
+                    .padding()
+                    .toolbar{
+                        ToolbarItem(placement:.primaryAction ){
+                            Button{
+                                dismiss()
+                            }label: {
+                                Text("Simpan").foregroundColor(Color(.blue))
+                            }
+                        }
+                        ToolbarItem(placement:.cancellationAction ){
+                            Button{
+                                dismiss()
+                            }label: {
+                                Text("Batal").foregroundColor(Color(.blue))
+                            }
+                        }
+                    }
+                    .navigationTitle("Profil")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-            }.padding(20)
-                .toolbar{
-                    
-                    ToolbarItem(placement:.primaryAction ){
-                        Button{
-                            dismiss()
-                        }label: {
-                            Text("Simpan    ").bold().foregroundColor(Color(.blue))
-                        }
-                    }
-                    ToolbarItem(placement: .principal) {
-                        ZStack {
-                            Text("Profile")
-                                .font(.title2.weight(.semibold))
-                                .foregroundColor(.primary)
-                        }
-                    }
-                    ToolbarItem(placement:.cancellationAction ){
-                        Button{
-                            dismiss()
-                        }label: {
-                            Text("Batal").bold().foregroundColor(Color(.blue))
-                        }
-                    }
-                    
-                    
-                }.navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }
