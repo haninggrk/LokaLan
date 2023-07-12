@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+
 struct WordCardView: View {
     @State var dummyBool = false
     @State var word: WordModel

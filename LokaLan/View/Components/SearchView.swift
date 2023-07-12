@@ -24,6 +24,7 @@ struct SearchView: View {
             .sheet(isPresented: $isOpenSpeech){
                 SpeechToTextView(searchText: $searchText)
                     .presentationDetents([.fraction(0.28)])
+                    .presentationDragIndicator(.visible)
             }
         } .padding(.horizontal)
             .frame(width: .infinity, height: 40)

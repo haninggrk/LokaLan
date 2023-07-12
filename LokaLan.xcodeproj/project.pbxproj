@@ -11,6 +11,7 @@
 		301B95472A4E6C9200E9B0F8 /* SpeechToTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B95462A4E6C9200E9B0F8 /* SpeechToTextView.swift */; };
 		301B95492A4E72C900E9B0F8 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B95482A4E72C900E9B0F8 /* BarView.swift */; };
 		301B954B2A4E7DE500E9B0F8 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301B954A2A4E7DE500E9B0F8 /* SpeechRecognizer.swift */; };
+		304846772A5F04EB00B29FB6 /* ModalsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304846762A5F04EB00B29FB6 /* ModalsBar.swift */; };
 		3052FCDC2A591EF90019783A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3052FCDB2A591EF90019783A /* WidgetKit.framework */; };
 		3052FCDE2A591EF90019783A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3052FCDD2A591EF90019783A /* SwiftUI.framework */; };
 		3052FCE12A591EF90019783A /* widget_lokalanBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052FCE02A591EF90019783A /* widget_lokalanBundle.swift */; };
@@ -77,6 +78,7 @@
 		301B95462A4E6C9200E9B0F8 /* SpeechToTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextView.swift; sourceTree = "<group>"; };
 		301B95482A4E72C900E9B0F8 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		301B954A2A4E7DE500E9B0F8 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		304846762A5F04EB00B29FB6 /* ModalsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalsBar.swift; sourceTree = "<group>"; };
 		3052FCD92A591EF90019783A /* widget_lokalanExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widget_lokalanExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3052FCDB2A591EF90019783A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3052FCDD2A591EF90019783A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -178,6 +180,7 @@
 				301B95462A4E6C9200E9B0F8 /* SpeechToTextView.swift */,
 				301B95482A4E72C900E9B0F8 /* BarView.swift */,
 				3086C2742A51BA4100449459 /* SearchView.swift */,
+				304846762A5F04EB00B29FB6 /* ModalsBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */,
 				CCA89B8F2A492FA3006418FB /* Extension.swift in Sources */,
+				304846772A5F04EB00B29FB6 /* ModalsBar.swift in Sources */,
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
 				CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */,
 				CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */,

@@ -16,10 +16,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Capsule()
-                .fill(Color(uiColor: .darkGray))
-                .frame(width: 70, height: 3)
-                .padding(.vertical,10)
+            ModalsBar()
             NavigationView {
                 ScrollView {
                     VStack {
