@@ -9,7 +9,9 @@ import SwiftUI
 import AVFoundation
 struct WordDetailView: View {
     @State var isEdit = false
+    var vm = WordViewModel()
     var word:WordModel
+
     var body: some View {
         ZStack {
             VStack{
@@ -40,7 +42,8 @@ struct WordDetailView: View {
                         Text("Ubah")
                         
                     }.foregroundColor(Color(.white)).sheet(isPresented: $isEdit){
-                        WordAddEditView(word: word)
+
+                        WordAddEditView(tempWord: vm )
                     }
                     
                 }
@@ -127,7 +130,12 @@ struct WordDetailView: View {
             .padding(.trailing, 20)
             .padding(.top, 100)
         }
-        .background(Color("BgWhite"))
+        .background(Color("BgWhite")).onAppear{
+            vm.name = word.name
+            vm.desc = word.desc
+            vm.usage_examples = word.usage_examples
+            vm.meaning = word.meaning
+        }
     }
 }
 

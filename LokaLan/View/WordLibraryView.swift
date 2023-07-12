@@ -17,7 +17,6 @@ struct WordLibraryView: View {
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -63,11 +62,13 @@ struct WordLibraryView: View {
                                     }.padding(.vertical,3)
                                 }
                                 }else{
-                                    ForEach(wordList.fetchedWords, id: \.self) {word in
-                                        GlobalWordCardView(word: word)
+                                    if(WordViewModel.shared.isLoading){
+                                        ProgressView("Menunggu...")
+                                    }else{
+                                        ForEach(wordList.fetchedWords, id: \.self) {word in
+                                            GlobalWordCardView(word: word)
+                                        }
                                     }
-                                   
-                                    
                                 }
                                 
                             }.navigationDestination(for: WordModel.self) { word in
@@ -95,7 +96,7 @@ struct WordLibraryView: View {
                     }
                     .foregroundColor(Color(.white))
                     .sheet(isPresented: $isAddWord){
-                        WordAddEditView()
+                        WordAddEditView(tempWord: wordList)
 
                     }
                 }
