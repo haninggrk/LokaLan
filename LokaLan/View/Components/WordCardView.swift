@@ -13,8 +13,8 @@ struct WordCardView: View {
     @State var word: WordModel
     @ObservedObject var player = AudioPlayer()
     @StateObject private var wordViewmodel = WordViewModel.shared
-    
-    
+    @State private var showingDeleteAlert = false
+    @State private var showingUnpublishedAlert = false
     
     var body: some View {
         
@@ -43,16 +43,32 @@ struct WordCardView: View {
                 }
                 SmallButton(label: "Global", systemImage: "globe", color: Color("Blue"),is_activated: word.is_published){
                     if(word.is_published){
-                        word.unpublish()
+                        showingUnpublishedAlert = true
                     }else{
                         word.pushToGlobal()
                     }
                     wordViewmodel.getAllWords()
                 }
+                .alert("Batalkan Publikasi ?", isPresented: $showingUnpublishedAlert) {
+                    Button("Ya", role: .destructive) {
+                        word.unpublish()
+                    }
+                    Button("Tidak", role: .cancel) {
+                        
+                    }
+                }
                 Spacer()
                 SmallButton(label: "Hapus", systemImage: "trash", color: Color.red, is_activated: dummyBool){
-                    WordViewModel.shared.delete(word: word)
-                    WordViewModel.shared.getAllWords()
+                    showingDeleteAlert = true
+                }
+                .alert("Anda yakin ingin menghapus ?", isPresented: $showingDeleteAlert) {
+                    Button("Ya", role: .destructive) {
+                        WordViewModel.shared.delete(word: word)
+                        WordViewModel.shared.getAllWords()
+                    }
+                    Button("Tidak", role: .cancel) {
+                        
+                    }
                 }
                 
                 
