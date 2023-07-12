@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import Foundation
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -40,58 +41,134 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
-struct widget_lokalanEntryView : View {
+struct LokalanWidgetView: View {
+    //    var word: Word?
     
+    @Environment(\.widgetFamily) var family: WidgetFamily
+    @ViewBuilder
+    var body: some View {
+        switch family {
+        case .systemSmall:
+            widget_lokalanSmallView()
+        case .systemMedium:
+            widget_lokalanMediumView()
+        @unknown default:
+            EmptyView()
+        }
+    }
+}
+
+struct widget_lokalanSmallView : View {
     var body: some View {
         VStack {
-            ZStack {
-                VStack {
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            ZStack{
-                                HStack{
-                                    
-                                }
-                                .frame(width: 20, height: 20)
-                                .padding(10)
-                                .background(.white)
-                                .opacity(0.2)
-                                .cornerRadius(15)
-                                
-                                Link(destination: URL(string: "game:///link1")!, label: {
-                                    Image(systemName: "plus.circle")
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                                        .foregroundColor(.white)
-                                })
-                            }
-                        }
+            HStack {
+                Text("Tetek Bengek")
+                    .bold()
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                Spacer()
+            }
+            
+            HStack {
+                Text("Semuanya (Dengan segala keribetan nya)")
+                    .foregroundColor(.white)
+                    .font(.footnote)
+                Spacer()
+            }
+            
+            HStack {
+                Spacer()
+                ZStack{
+                    HStack{
+                        
                     }
+                    .frame(width: 20, height: 20)
+                    .padding(10)
+                    .background(.white)
+                    .opacity(0.2)
+                    .cornerRadius(15)
+                    
+                    Link(destination: URL(string: "game:///link1")!, label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                    })
                 }
-                
-                VStack {
-                    HStack {
-                        Text("Tetek Bengek")
-                            .bold()
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.top)
-                            .padding(.bottom, 2)
-                        Spacer()
-                    }
-                    
-                    HStack {
-                        Text("Semuanya (Dengan segala keribetan nya)")
-                            .foregroundColor(.white)
-                            .font(.footnote)
-                        Spacer()
-                    }
-                    
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
+        .padding()
+        .background(
+            LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom)
+        )
+        .cornerRadius(20)
+        .widgetURL(URL(string: "game:///link1")!)
+    }
+}
+
+struct widget_lokalanMediumView : View {
+    var body: some View {
+        HStack {
+            VStack {
+                HStack {
+                    Text("Tetek Bengek")
+                        .bold()
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.top)
+                        .padding(.bottom, 2)
                     Spacer()
                 }
-                .multilineTextAlignment(.leading)
+                
+                HStack {
+                    Text("Semuanya (Dengan segala keribetan nya)")
+                        .foregroundColor(.white)
+                        .font(.footnote)
+                    Spacer()
+                }
+                
+                Spacer()
+            }
+            .multilineTextAlignment(.leading)
+            VStack {
+                ZStack{
+                    HStack{
+                        
+                    }
+                    .frame(width: 20, height: 20)
+                    .padding(10)
+                    .background(.white)
+                    .opacity(0.2)
+                    .cornerRadius(15)
+                    
+                    Link(destination: URL(string: "game:///link1")!, label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                    })
+                }
+                ZStack{
+                    HStack{
+                        
+                    }
+                    .frame(width: 20, height: 20)
+                    .padding(10)
+                    .background(.white)
+                    .opacity(0.2)
+                    .cornerRadius(15)
+                    
+                    Link(destination: URL(string: "game:///link2")!, label: {
+                        Image(systemName: "speaker.wave.2.circle")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                    })
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -109,16 +186,17 @@ struct widget_lokalan: Widget {
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            widget_lokalanEntryView()
+            LokalanWidgetView()
         }
         .configurationDisplayName("Word Lokalan")
         .description("Tampilkan kata yang ingin diingat.")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct widget_lokalan_Previews: PreviewProvider {
     static var previews: some View {
-        widget_lokalanEntryView()
+        LokalanWidgetView()
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

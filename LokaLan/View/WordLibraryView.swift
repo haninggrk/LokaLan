@@ -112,6 +112,7 @@ struct WordLibraryView: View {
 //        .navigationTitle("My Home")
         .onOpenURL(perform: { (url) in
             self.isAddWord = url == URL(string: "game:///link1")!
+            self.isOpenProfile = url == URL(string: "game:///link2")!
         })
     }
 }
