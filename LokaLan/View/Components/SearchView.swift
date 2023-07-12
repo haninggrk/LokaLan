@@ -28,7 +28,7 @@ struct SearchView: View {
         } .padding(.horizontal)
             .frame(width: .infinity, height: 40)
             .background(Color(.white))
-            .cornerRadius(5)
+            .cornerRadius(10)
             .foregroundColor(Color("Blue"))
     }
 }

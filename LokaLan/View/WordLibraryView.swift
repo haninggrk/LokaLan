@@ -14,6 +14,7 @@ struct WordLibraryView: View {
     @State private var isEditWord = false
     @State private var isOpenProfile = false
     @State private var isOpenSpeech = false
+    @State private var isOpenFilter = false
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
@@ -23,7 +24,22 @@ struct WordLibraryView: View {
                 
                 VStack(alignment: .leading){
                     Text("Kosakata").font(.largeTitle.weight(.bold)).foregroundColor(.white).padding(.bottom,-1)
-                    SearchView()
+                    HStack {
+                        SearchView()
+                        
+                        Button(action: {
+                            isOpenFilter = true
+                        }) {
+                            Image(systemName: "slider.horizontal.3")
+                                .resizable()
+                                .frame(width: 20, height: 18)
+                                .padding(.leading, 10)
+                        }
+                        .foregroundColor(Color(.white))
+                        .sheet(isPresented: $isOpenFilter){
+                            WordAddEditView(tempWord: wordList)
+                        }
+                    }
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 20)

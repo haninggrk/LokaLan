@@ -20,13 +20,12 @@ struct SmallButton: View {
             action()
         }label: {
             HStack{
-                Text("\(label)")
-                
                 Image(systemName: "\(systemImage)")
-
-            }.padding(.horizontal,8).padding(.vertical,5).background(is_activated ? Color("SmallButtonLightBlue"):.white)   .overlay(
+                
+                Text("\(label)").font(.caption)
+            }.padding(.horizontal,8).padding(.vertical,10).background(is_activated ? Color("SmallButtonLightBlue"):.white)   .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(color, lineWidth: 1)).foregroundColor(color)
+                    .stroke(color, lineWidth: 0.3)).foregroundColor(color)
         }
 
     }

@@ -12,26 +12,29 @@ struct WordCardView: View {
     @State var word: WordModel
     @ObservedObject var player = AudioPlayer()
     @StateObject private var wordViewmodel = WordViewModel.shared
-
-
- 
+    
+    
+    
     var body: some View {
-      
+        
         VStack{
             HStack{
                 VStack(alignment: .leading){
-                    Text("\(word.name)").font(.title.weight(.bold))
-                    Text("\(word.meaning)").font(.headline.weight(.light))
+                    Text("\(word.name)").font(.title.weight(.bold)).padding(.bottom,4)
+                    Text("\(word.meaning)").font(.title3.weight(.light))
                 }.foregroundColor(.black)
                 Spacer()
-                Button{
-                    player.playAudio(url: word.audio_path)
-                }label: {
-                    Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(Color("Blue"))
+                VStack {
+                    Button{
+                        player.playAudio(url: word.audio_path)
+                    }label: {
+                        Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 40,height: 40).foregroundColor(Color("Blue"))
+                    }
+                    Spacer()
                 }
             }.padding(.bottom,15)
             HStack{
-              
+                
                 SmallButton(label: "Widget", systemImage: "pin", color: Color("Blue"),is_activated: word.is_widget){
                     word.is_widget.toggle()
                     word.save()
@@ -46,15 +49,15 @@ struct WordCardView: View {
                     wordViewmodel.getAllWords()
                 }
                 Spacer()
-                SmallButton(label: "Delete", systemImage: "trash", color: Color.red, is_activated: dummyBool){
+                SmallButton(label: "Hapus", systemImage: "trash", color: Color.red, is_activated: dummyBool){
                     WordViewModel.shared.delete(word: word)
                     WordViewModel.shared.getAllWords()
                 }
-       
+                
                 
                 
             }.font(.footnote).bold()
-        }.padding(20).background(.white).cornerRadius(10).shadow(radius: 1)
+        }.padding(20).background(.white).cornerRadius(10).shadow(radius: 0.3)
     }
 }
 
