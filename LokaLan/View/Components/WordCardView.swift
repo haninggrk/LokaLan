@@ -32,7 +32,7 @@ struct WordCardView: View {
             }.padding(.bottom,15)
             HStack{
               
-                SmallButton(label: "Widget", systemImage: "pin", color: Color("Blue"),is_activated: $word.is_widget){
+                SmallButton(label: "Widget", systemImage: "pin", color: Color("Blue"),is_activated: word.is_widget){
                     word.is_widget.toggle()
                     word.save()
                     wordViewmodel.getAllWords()

@@ -53,26 +53,26 @@ struct WordLibraryView: View {
                     VStack{
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
                             if(submenu == 0){
-                            ForEach(wordList.words, id: \.self) {word in
-                                NavigationLink(){
-                                    WordDetailView(word: word)
-                                }label:{
-                                    WordCardView(word:word)
-                                }.padding(.vertical,3)
-                            }
+                                ForEach(wordList.words, id: \.self) {word in
+                                    NavigationLink(){
+                                        WordDetailView(word: word)
+                                    }label:{
+                                        WordCardView(word:word)
+                                    }.padding(.vertical,3)
+                                }
                             }else{
                                 ForEach(wordList.fetchedWords, id: \.self) {word in
                                     GlobalWordCardView(word: word)
                                 }
+                                
+                                if(WordViewModel.shared.isLoading){
+                                    ProgressView("Menunggu...")
                                 }else{
-                                    if(WordViewModel.shared.isLoading){
-                                        ProgressView("Menunggu...")
-                                    }else{
-                                        ForEach(wordList.fetchedWords, id: \.self) {word in
-                                            GlobalWordCardView(word: word)
-                                        }
+                                    ForEach(wordList.fetchedWords, id: \.self) {word in
+                                        GlobalWordCardView(word: word)
                                     }
-                               
+                                }
+                                
                                 
                             }
                             
@@ -100,7 +100,7 @@ struct WordLibraryView: View {
                 }
                 .foregroundColor(Color(.white))
                 .sheet(isPresented: $isAddWord){
-                    WordAddEditView()
+                    WordAddEditView(tempWord: wordList)
                 }
             }
             ToolbarItem(placement: .automatic) {
@@ -116,7 +116,7 @@ struct WordLibraryView: View {
                 }
             }
         }
-//        .navigationTitle("My Home")
+        //        .navigationTitle("My Home")
         .onOpenURL(perform: { (url) in
             self.isAddWord = url == URL(string: "game:///link1")!
             self.isOpenProfile = url == URL(string: "game:///link2")!
