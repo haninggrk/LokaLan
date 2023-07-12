@@ -15,7 +15,7 @@ struct SearchView: View {
         HStack {
             Image(systemName: "magnifyingglass")
             TextField("Cari", text: $searchText)
-                .foregroundColor(Color.black)
+                .foregroundColor(Color("Blue"))
             Button(action: {
                 isOpenSpeech = true
             }) {
@@ -29,7 +29,7 @@ struct SearchView: View {
             .frame(width: .infinity, height: 40)
             .background(Color(.white))
             .cornerRadius(5)
-            .foregroundColor(.black)
+            .foregroundColor(Color("Blue"))
     }
 }
 

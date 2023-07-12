@@ -27,17 +27,17 @@ struct WordCardView: View {
                 Button{
                     player.playAudio(url: word.audio_path)
                 }label: {
-                    Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(.blue)
+                    Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(Color("Blue"))
                 }
             }.padding(.bottom,15)
             HStack{
               
-                SmallButton(label: "Widget", systemImage: "pin", color: Color.blue,is_activated: word.is_widget){
+                SmallButton(label: "Widget", systemImage: "pin", color: Color("Blue"),is_activated: $word.is_widget){
                     word.is_widget.toggle()
                     word.save()
                     wordViewmodel.getAllWords()
                 }
-                SmallButton(label: "Global", systemImage: "globe", color: Color.blue,is_activated: word.is_published){
+                SmallButton(label: "Global", systemImage: "globe", color: Color("Blue"),is_activated: word.is_published){
                     if(word.is_published){
                         word.unpublish()
                     }else{
