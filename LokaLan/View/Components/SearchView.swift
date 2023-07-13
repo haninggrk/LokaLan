@@ -24,11 +24,12 @@ struct SearchView: View {
             .sheet(isPresented: $isOpenSpeech){
                 SpeechToTextView(searchText: $searchText)
                     .presentationDetents([.fraction(0.28)])
+                    .presentationDragIndicator(.visible)
             }
         } .padding(.horizontal)
             .frame(width: .infinity, height: 40)
             .background(Color(.white))
-            .cornerRadius(5)
+            .cornerRadius(10)
             .foregroundColor(Color("Blue"))
     }
 }

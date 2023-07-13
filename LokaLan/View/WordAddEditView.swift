@@ -21,124 +21,110 @@ struct WordAddEditView: View {
         return CGFloat(level * (150 / 25)) // scaled to max at 300 (our height of our bar)
     }
     
-//    init(word:WordModel? = nil){
-//        if let word = word{
-//            print("isi", word.name)
-//            tempWord.name = word.name
-//            tempWord.desc = word.desc
-//            tempWord.meaning = word.meaning
-//            tempWord.usage_examples = word.usage_examples
-//        } else {
-//            print("isi2")
-//        }
-//    }
-
+    //    init(word:WordModel? = nil){
+    //        if let word = word{
+    //            print("isi", word.name)
+    //            tempWord.name = word.name
+    //            tempWord.desc = word.desc
+    //            tempWord.meaning = word.meaning
+    //            tempWord.usage_examples = word.usage_examples
+    //        } else {
+    //            print("isi2")
+    //        }
+    //    }
+    
     var body: some View {
-        NavigationView{
-            
-            VStack(alignment:.leading){
-                Group{
-                    Text("Kata").bold()
-                    ZStack{
-                        CustomTextField(text:  $tempWord.name, placeholder: "Masukkan kata")
-                        HStack{
-                         Spacer()
-                            Image(systemName: "speaker.wave.2.circle").padding(10).foregroundColor(.gray)
-                        }
-                    }
-                    Text("Arti").bold()
-                    CustomTextField(text: $tempWord.meaning, placeholder: "Masukkan arti kata")
-                    Text("Definisi").bold()
-                    CustomTextEditor(text: $tempWord.desc,placeholderString: "Masukkan definisi kata")
-                    Text("Contoh").bold()
-                    CustomTextEditor(text: $tempWord.usage_examples,placeholderString: "Masukkan contoh penggunaan kata")
-                    
-                    HStack() {
-                        Spacer()
-                        ForEach(tempWord.soundSamples, id: \.self) { level in
-                            BarView(value: self.normalizeSoundLevel(level: level))
-                        }
-                        Spacer()
-                        Button{
-                            if(isRecording){
-                                tempWord.stopRecording()
-                            }else{
-                                tempWord.startRecording()
-                                
+        VStack {
+            ModalsBar()
+            NavigationView{
+                ScrollView {
+                    VStack(alignment:.leading){
+                        Group{
+                            VStack {
+                                HStack {
+                                    Text("Kata").font(.subheadline).bold()
+                                    Spacer()
+                                }
+                                ZStack{
+                                    CustomTextField(text:  $tempWord.name, placeholder: "Masukkan kata")
+                                    HStack{
+                                        Spacer()
+                                        Image(systemName: "speaker.wave.2.circle").padding(10).foregroundColor(.gray)
+                                    }
+                                }
+                            }.padding(.bottom, 15)
+                            VStack {
+                                HStack {
+                                    Text("Arti").font(.subheadline).bold()
+                                    Spacer()
+                                }
+                                CustomTextField(text: $tempWord.meaning, placeholder: "Masukkan arti kata")
+                            }.padding(.bottom, 15)
+                            VStack {
+                                HStack {
+                                    Text("Definisi").font(.subheadline).bold()
+                                    Spacer()
+                                }
+                                CustomTextEditor(text: $tempWord.desc,placeholderString: "Masukkan definisi kata")
+                            }.padding(.bottom, 15)
+                            VStack {
+                                HStack {
+                                    Text("Contoh").font(.subheadline).bold()
+                                    Spacer()
+                                }
+                                CustomTextEditor(text: $tempWord.usage_examples,placeholderString: "Masukkan contoh penggunaan kata")
+                            }.padding(.bottom, 15)
+                            
+                            HStack {
+                                Spacer()
+                                Button{
+                                    if(isRecording){
+                                        tempWord.stopRecording()
+                                    }else{
+                                        tempWord.startRecording()
+                                        
+                                    }
+                                    isRecording.toggle()
+                                }
+                            label: {
+                                Image(systemName: isRecording ? "stop": "mic.circle.fill")
+                                    .resizable()
+                                    .frame(width: isRecording ? 40:60,height: isRecording ? 40:60)
+                                    .padding()
+                                    .cornerRadius(100)
+                                    .foregroundColor(Color("Blue"))
                             }
-                            isRecording.toggle()
-                            
-                            
-                        }label: {
-                            Image(systemName: isRecording ? "stop": "mic").resizable().frame(width:  isRecording ? 30:20,height: 30).padding(5).background(.clear).cornerRadius(100).foregroundColor(Color("Blue"))
+                                Spacer()
+                            }
                         }
                         Spacer()
-                    }.padding(10
-                    )
-                    .frame(maxHeight: 80)
-                    
-                    .background(Color("LightGray")
-                    ).cornerRadius(20).padding(.top,10)
-                    
-                    
+                    }
+                    .padding()
+                    .padding(.horizontal)
+                    .toolbar{
+                        ToolbarItem(placement:.primaryAction ){
+                            Button{
+                                tempWord.save()
+                                wordList.getAllWords()
+                                dismiss()
+                            }label:{
+                                Text("Simpan").foregroundColor(tempWord.name == "" || tempWord.meaning == "" ? .gray : Color("Blue"))
+                            }.disabled(tempWord.name == "" || tempWord.meaning == "")
+                        }
+                        ToolbarItem(placement:.cancellationAction ){
+                            Button{
+                                dismiss()
+                            }label: {
+                                Text("Batal").foregroundColor(Color("Blue"))
+                            }
+                        }
+                    }
+                    .navigationTitle("Tambah")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                
-                
-                
-                
-                
-                Spacer()
-                
-                
-            }.padding(20)
-            
-            
-                .toolbar{
-                    
-                    ToolbarItem(placement:.primaryAction ){
-                        Button{
-                            tempWord.save()
-                            wordList.getAllWords()
-                            dismiss()
-                        }label:{
-                            Text("Simpan").bold().foregroundColor(Color(tempWord.name == "" || tempWord.meaning == "" ? .gray : .blue))
-                        }.disabled(tempWord.name == "" || tempWord.meaning == "")
-                    }
-                    ToolbarItem(placement: .principal) {
-                        ZStack {
-                            
-                            Text("Tambah")
-                                .font(.title2.weight(.semibold))
-                                .foregroundColor(.primary)
-                        }
-                    }
-                    ToolbarItem(placement:.cancellationAction ){
-                        Button{
-                            dismiss()
-                        }label: {
-                            Text("Batal").bold().foregroundColor(Color(.blue))
-                        }
-                    }
-                    
-                    
-                }.navigationBarTitleDisplayMode(.inline)
-        }
-        
-        
-        
-    }
-    struct BarView: View {
-        var value: CGFloat
-        
-        var body: some View {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color("Blue"))
-                    .frame(width: (UIScreen.main.bounds.width - CGFloat(20) * 11) / CGFloat(30), height: value)
             }
         }
     }
-    
 }
 
 
