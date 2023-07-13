@@ -11,42 +11,71 @@ struct SignUpView: View {
     @State var userName = ""
     @State var userEmail = ""
     @State var userPassword = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-                HStack{
-                    Text("Sudah punya akun?")
-                    Text("Masuk") //nanti dibuat nge link ke LoginView
-                }
-                .padding(.bottom)
-                .padding(.horizontal)
+                Text("Buat Akun Anda").font(.largeTitle).bold()
+                    .padding(.horizontal)
+                    .padding(.top)
+                
+                    Text("Buat akun untuk melanjutkan")
+                        .foregroundColor(Color.gray)
+                        .padding(.bottom)
+                        .padding(.horizontal)
                 Group{
-                Text("Nama ID").bold()
-                CustomTextField(text: $userName, placeholder: "Masukan nama ID")
-                Text("Email").bold()
-                CustomTextField(text: $userEmail, placeholder: "Masukan Email")
-                Text("Kata Sandi").bold()
-                CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
-                Button{
-                        
-                } label: {
-                    Text("Daftar")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 30)
-                }
-                .position(x: 180, y: 70)
+                    Text("Nama ID").bold().padding(.top)
+                    CustomTextField(text: $userName, placeholder: "Masukan nama ID")
+                    
+                    Text("Email").bold()
+                    CustomTextField(text: $userEmail, placeholder: "Masukan Email")
+                    
+                    Text("Kata Sandi").bold()
+                    CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
+                    
+                    HStack{
+                        Image(systemName: "checkmark.circle")
+                        Text("Saya menerima Syarat dan Ketentuan layanan dan setuju dengan Kebijakan Privasi ini")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                    } .padding(.top)
+                    
+                    Button{
+            
+                    } label: {
+                        Text("Daftar")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(height: 30)
+                    }
+                    .padding(.top)
+                    .padding(.bottom)
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
                     .tint(Color("Blue2"))
                     
+                    HStack(spacing: 4){
+                        Spacer()
+                        Text("Sudah punya akun?")
+                        Text("Masuk").foregroundColor(Color("Blue2"))
+                        Text("untuk melanjutkan")
+                        Spacer()
+                    }
+                    .font(.system(size: 14))
                 }
                 .padding(.horizontal)
                 Spacer()
             }
-            .navigationTitle("Buat akun anda")
-            .background(
-                LinearGradient(gradient: Gradient(colors: [Color("BgPurple"),.white, .white,.white, .white, .white, .white, Color("BgPurple")]), startPoint: .top, endPoint: .bottom).ignoresSafeArea())
+            .padding(.horizontal)
+            .toolbar{
+                ToolbarItem(placement:.cancellationAction ){
+                    Button{
+                        dismiss()
+                    }label: {
+                        Text("Batal").bold().foregroundColor(Color(.blue))
+                    }
+                }
+            }
         }
     }
 }

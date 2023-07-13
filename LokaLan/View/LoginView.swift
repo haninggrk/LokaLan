@@ -7,49 +7,77 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct LoginView: View {
     @State var userName = ""
     @State var userPassword = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-                HStack{
-                    Text("Belum punya akun?")
-                    Text("Daftar") //nanti dibuat nge link ke SignUpView
-                }
-                .padding(.bottom)
-                .padding(.horizontal)
+                Text("Selamat Datang").font(.largeTitle).bold()
+                    .padding(.horizontal)
+                    .padding(.top)
+                
+                Text("Masuk untuk melanjutkan")
+                    .foregroundColor(Color.gray)
+                    .padding(.bottom)
+                    .padding(.horizontal)
+                
                 Group{
-                Text("Email atau Nama ID").bold()
-                CustomTextField(text: $userName, placeholder: "Masukan email atau nama ID")
-                Text("Kata Sandi").bold()
-                CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
-                Button{
+                    Text("Email atau Nama ID").bold().padding(.top)
+                    CustomTextField(text: $userName, placeholder: "Masukan email atau nama ID")
+                    
+                    Text("Kata Sandi").bold()
+                    CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
+                    HStack{
+                        Spacer()
+                        Text("Lupa kata sandi?")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color("Blue2"))
+                    }
+                    
+                    Button{
                         
-                } label: {
-                    Text("Masuk")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 30)
-                }
-                .position(x: 180, y: 150)
+                    } label: {
+                        Text("Masuk")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(height: 30)
+                    }
+                    .padding(.top)
+                    .padding(.bottom)
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
                     .tint(Color("Blue2"))
-                    .frame(alignment: .center)
+                    
+                    HStack(spacing: 4){
+                        Spacer()
+                        Text("Belum punya akun?")
+                        Text("Daftar").foregroundColor(Color("Blue2"))
+                        Text("untuk melanjutkan")
+                        Spacer()
+                    }
+                    .font(.system(size: 14))
                 }
                 .padding(.horizontal)
                 Spacer()
             }
-            .navigationTitle("Selamat datang")
-            .background(
-                LinearGradient(gradient: Gradient(colors: [Color("BgPurple"),.white, .white,.white, .white, .white, .white, Color("BgPurple")]), startPoint: .top, endPoint: .bottom).ignoresSafeArea())
+            .padding(.horizontal)
+            .toolbar{
+                ToolbarItem(placement:.cancellationAction ){
+                    Button{
+                        dismiss()
+                    }label: {
+                        Text("Batal").bold().foregroundColor(Color(.blue))
+                    }
+                }
+            }
         }
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        LoginView()
     }
 }

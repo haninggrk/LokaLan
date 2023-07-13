@@ -14,7 +14,7 @@
 		3086C2752A51BA4100449459 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3086C2742A51BA4100449459 /* SearchView.swift */; };
 		449E3BDB2A57B72A00313D29 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E3BDA2A57B72A00313D29 /* LoginView.swift */; };
 		449E3BF72A580E8500313D29 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E3BF62A580E8500313D29 /* SignUpView.swift */; };
-		449E3BF92A58108C00313D29 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E3BF82A58108C00313D29 /* Onboarding.swift */; };
+		44DB95A92A5F968500699A1B /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DB95A82A5F968500699A1B /* VerificationView.swift */; };
 		CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD62A4A760D0058113C /* WordAddEditView.swift */; };
 		CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EAD82A4A82960058113C /* CustomTextField.swift */; };
 		CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */; };
@@ -48,7 +48,7 @@
 		3086C2742A51BA4100449459 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		449E3BDA2A57B72A00313D29 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		449E3BF62A580E8500313D29 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		449E3BF82A58108C00313D29 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		44DB95A82A5F968500699A1B /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		CC13EAD62A4A760D0058113C /* WordAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordAddEditView.swift; sourceTree = "<group>"; };
 		CC13EAD82A4A82960058113C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		CC13EADA2A4A8A970058113C /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 				CC13EAD62A4A760D0058113C /* WordAddEditView.swift */,
 				301B95442A4E677C00E9B0F8 /* ProfileView.swift */,
 				449E3BF62A580E8500313D29 /* SignUpView.swift */,
-				449E3BF82A58108C00313D29 /* Onboarding.swift */,
+				44DB95A82A5F968500699A1B /* VerificationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,7 +283,6 @@
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
 				CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */,
 				CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */,
-				449E3BF92A58108C00313D29 /* Onboarding.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
 				CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */,
 				CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */,
@@ -293,6 +292,7 @@
 				449E3BF72A580E8500313D29 /* SignUpView.swift in Sources */,
 				301B95472A4E6C9200E9B0F8 /* SpeechToTextView.swift in Sources */,
 				CCA89B8D2A492897006418FB /* Word.swift in Sources */,
+				44DB95A92A5F968500699A1B /* VerificationView.swift in Sources */,
 				CC291F402A5066D70054FAD9 /* AudioPlayer.swift in Sources */,
 				CCA791732A49B58A00CACC8F /* WordDetailView.swift in Sources */,
 				CCAD30842A428C820074C325 /* LokaLanApp.swift in Sources */,
