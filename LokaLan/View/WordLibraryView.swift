@@ -18,26 +18,37 @@ struct WordLibraryView: View {
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
+    @State private var selectedFilter: String = "A-Z"
+    let filter = ["A-Z", "Terbaru", "Popularitas", "Global"]
+    
     var body: some View {
         VStack {
             VStack{
-                
                 VStack(alignment: .leading){
                     Text("Kosakata").font(.largeTitle.weight(.bold)).foregroundColor(.white).padding(.bottom,-1)
                     HStack {
                         SearchView()
                         
-                        Button(action: {
-                            isOpenFilter = true
-                        }) {
+                        Menu {
+                            ForEach(filter, id: \.self) {filterResult in
+                                Button(action: {
+                                    selectedFilter = filterResult
+                                }, label: {
+                                    HStack {
+                                        Text (filterResult)
+                                        Spacer()
+                                        if(selectedFilter == filterResult){
+                                            Image(systemName: "checkmark")
+                                        }
+                                    }
+                                })
+                            }
+                        } label: {
                             Image(systemName: "slider.horizontal.3")
                                 .resizable()
                                 .frame(width: 20, height: 18)
                                 .padding(.leading, 10)
-                        }
-                        .foregroundColor(Color(.white))
-                        .sheet(isPresented: $isOpenFilter){
-                            WordAddEditView(tempWord: wordList)
+                                .foregroundColor(Color(.white))
                         }
                     }
                 }
@@ -51,15 +62,14 @@ struct WordLibraryView: View {
             if (wordList.words.isEmpty) {
                 Spacer()
                 VStack{
-                    Image(systemName:"key.radiowaves.forward")
+                    Image("Saly1")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100, height: 100)
-                        .padding(.leading, 30)
+                        .frame(width: 200, height: 300)
                     
                     Text("You don’t have any word yet, add by click ‘+’ icon in the top right corner.")
                         .font(.footnote)
-                        .padding(30)
+                        .padding()
                         .multilineTextAlignment(.center)
                 }
                 .foregroundColor(.gray)
