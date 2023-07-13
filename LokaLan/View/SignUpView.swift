@@ -29,7 +29,7 @@ struct SignUpView: View {
                 Text("Kata Sandi").bold()
                 CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
                 Button{
-                        
+    
                 } label: {
                     Text("Daftar")
                         .frame(maxWidth: .infinity, alignment: .center)

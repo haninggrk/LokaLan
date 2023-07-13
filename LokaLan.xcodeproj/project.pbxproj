@@ -31,6 +31,8 @@
 		CC291F402A5066D70054FAD9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC291F3F2A5066D70054FAD9 /* AudioPlayer.swift */; };
 		CC5034D32A4BD5CF000EA890 /* SegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5034D22A4BD5CF000EA890 /* SegmentControlView.swift */; };
 		CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5034D42A4BE1FC000EA890 /* SmallButton.swift */; };
+		CC71E4522A5F7DAA0071CA45 /* AudioDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71E4512A5F7DAA0071CA45 /* AudioDownloader.swift */; };
+		CC71E4542A5F87120071CA45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71E4532A5F87120071CA45 /* User.swift */; };
 		CC9C9C742A525972009CB9FA /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9C9C732A525972009CB9FA /* WordResponse.swift */; };
 		CC9C9C762A527AFB009CB9FA /* GlobalWordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9C9C752A527AFB009CB9FA /* GlobalWordCardView.swift */; };
 		CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7916C2A49B27B00CACC8F /* WordCardView.swift */; };
@@ -96,6 +98,8 @@
 		CC291F3F2A5066D70054FAD9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		CC5034D22A4BD5CF000EA890 /* SegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlView.swift; sourceTree = "<group>"; };
 		CC5034D42A4BE1FC000EA890 /* SmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButton.swift; sourceTree = "<group>"; };
+		CC71E4512A5F7DAA0071CA45 /* AudioDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDownloader.swift; sourceTree = "<group>"; };
+		CC71E4532A5F87120071CA45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CC9C9C732A525972009CB9FA /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
 		CC9C9C752A527AFB009CB9FA /* GlobalWordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordCardView.swift; sourceTree = "<group>"; };
 		CCA7916C2A49B27B00CACC8F /* WordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardView.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			children = (
 				CCA89B8C2A492897006418FB /* Word.swift */,
 				301B954A2A4E7DE500E9B0F8 /* SpeechRecognizer.swift */,
+				CC71E4532A5F87120071CA45 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				CCAD30A62A429E930074C325 /* CoreDataManager.swift */,
 				CCA89B8E2A492FA3006418FB /* Extension.swift */,
 				CC291F3F2A5066D70054FAD9 /* AudioPlayer.swift */,
+				CC71E4512A5F7DAA0071CA45 /* AudioDownloader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -391,7 +397,9 @@
 				CC9C9C742A525972009CB9FA /* WordResponse.swift in Sources */,
 				301B95492A4E72C900E9B0F8 /* BarView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
+				CC71E4542A5F87120071CA45 /* User.swift in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
+				CC71E4522A5F7DAA0071CA45 /* AudioDownloader.swift in Sources */,
 				CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */,
 				CCA89B8F2A492FA3006418FB /* Extension.swift in Sources */,
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,

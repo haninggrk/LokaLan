@@ -100,7 +100,7 @@ struct WordLibraryView: View {
                 }
                 .foregroundColor(Color(.white))
                 .sheet(isPresented: $isAddWord){
-                    WordAddEditView(tempWord: wordList)
+                    WordAddEditView(tempWord: wordList).environment(\.colorScheme, .light)
                 }
             }
             ToolbarItem(placement: .automatic) {
@@ -111,7 +111,7 @@ struct WordLibraryView: View {
                 }
                 .foregroundColor(Color(.white))
                 .sheet(isPresented: $isOpenProfile){
-                    ProfileView()
+                    ProfileView().environment(\.colorScheme, .light)
                     
                 }
             }

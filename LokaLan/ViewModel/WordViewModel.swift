@@ -35,7 +35,41 @@ class WordViewModel: ObservableObject{
         words = CoreDataManager.shared.getAllWords().map(WordModel.init)
     }
     
+    func addWordToLocalLibrary(wordData: WordData) {
+        let word = Word(context: CoreDataManager.shared.viewContext)
+        word.word = wordData.word
+        word.meaning = wordData.meaning
+        word.desc = wordData.description
+        
+        word.downvote = Int32(wordData.downvote)
+        word.upvote = Int32(wordData.upvote)
+        word.is_local = true
+        word.published_id = Int32(wordData.id)
+        
+        if let audioURLString = wordData.audio_path {
+            // Remove "optional" and single quotes from the string
+            let cleanedURLString = audioURLString.replacingOccurrences(of: "Optional('", with: "").replacingOccurrences(of: "')", with: "")
+            if let audioURL = URL(string: "https://lokalan.curiousgalih.biz.id/uploads/\(cleanedURLString)") {
+                downloadAudioFromURL(audioURL) { localURL in
+                    if let localURL = localURL {
+                        word.audio_path = localURL.absoluteString
+                    } else {
+                        word.audio_path = ""
+                    }
+                    
+                    CoreDataManager.shared.save()
+                }
+            } else {
+                word.audio_path = ""
+                CoreDataManager.shared.save()
+            }
+        } else {
+            word.audio_path = ""
+            CoreDataManager.shared.save()
+        }
+    }
 
+    
     func save(){
         let word = Word(context: CoreDataManager.shared.viewContext)
         word.word = name

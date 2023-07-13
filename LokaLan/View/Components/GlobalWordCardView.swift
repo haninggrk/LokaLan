@@ -26,7 +26,14 @@ struct GlobalWordCardView: View {
                 }label: {
                     Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(.blue)
                 }
-                
+                HStack{
+                    Button{
+                        WordViewModel.shared.addWordToLocalLibrary(wordData: word)
+                        WordViewModel.shared.getAllWords()
+                    }label: {
+                        Text("Add to Local")
+                    }
+                }
             }.padding(.bottom,15)
             HStack{
             
