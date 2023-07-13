@@ -6,8 +6,13 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class UserViewModel: ObservableObject{
+    @AppStorage("username") var username: String = ""
+    @AppStorage("id") var id: Int = 0
     
+    func login(){
+        
+    }
 }

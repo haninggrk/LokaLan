@@ -8,7 +8,6 @@
 import Foundation
 
 struct UserModel{
-
     var name: String
     var id: Int
     var email: String
