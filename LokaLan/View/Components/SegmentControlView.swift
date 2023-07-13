@@ -15,7 +15,7 @@ struct SegmentControlView: View {
             HStack {
                 Spacer()
                 Text("Lokal")
-                    .foregroundColor(submenu == 0 ? .blue:.white).bold()
+                    .foregroundColor(submenu == 0 ? Color("Blue"):.white).bold()
                 Spacer()
                 
             }
@@ -31,13 +31,14 @@ struct SegmentControlView: View {
                 Text("Global")
                     .bold()
                 
-                    .foregroundColor(submenu == 0 ? .white:.blue)
+                    .foregroundColor(submenu == 0 ? .white:Color("Blue"))
                 Spacer()
             }
             .padding(.vertical,20)
             .background(RoundedCorners(color: Color(submenu == 0 ?  "BgPurple2":"BgWhite"),bgcolor: Color(submenu == 0 ? "BgWhite":"BgPurple2"), tl: submenu == 1 ? 30:0, tr: 0, bl: submenu == 0 ? 30:0, br: 0))
             .onTapGesture{
                 submenu = 1
+                WordViewModel.shared.fetchWordFromAPI()
             }
             
             

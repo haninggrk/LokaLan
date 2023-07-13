@@ -11,7 +11,10 @@ import CoreData
 struct ContentView: View {
     
     var body: some View {
-        WordLibraryView()
+        
+        NavigationStack {
+            WordLibraryView()
+        }
     }
 }
 struct ContentView_Previews: PreviewProvider {
