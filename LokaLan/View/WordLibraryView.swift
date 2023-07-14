@@ -14,7 +14,7 @@ struct WordLibraryView: View {
     @State private var isOpenProfile = false
     @State private var isOpenSpeech = false
     @State private var isOpenFilter = false
-//    @State private var words = []
+    //    @State private var words = []
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
@@ -40,7 +40,7 @@ struct WordLibraryView: View {
                                         if(selectedFilter == filterResult){
                                             Image(systemName: "checkmark")
                                             if (selectedFilter == "A-Z"){
-//                                               words =  wordList.words
+                                                //                                               words =  wordList.words
                                                 
                                             }
                                         }
@@ -86,39 +86,39 @@ struct WordLibraryView: View {
                                 ForEach(wordList.filteredWordList, id: \.self) {word in
                                     NavigationLink(){
                                         WordDetailView(word: word)
-//                                            .navigationBarBackButtonHidden(true)
+                                        //                                            .navigationBarBackButtonHidden(true)
                                     }label:{
                                         WordCardView(word:word)
                                     }.padding(.vertical,3)
                                 }
                             }
-                        }else{
-                            
-                            
-                            if(WordViewModel.shared.isLoading){
-                                ProgressView("Menunggu...")
-                            }else{
-                                ForEach(wordList.filteredFetchedWords, id: \.self) {word in
-                                    NavigationLink(){
-                                        GlobalWordDetailView(word: word)
-                                    }label: {
-                                        GlobalWordCardView(word: word)
+                            else{
+                                
+                                
+                                if(WordViewModel.shared.isLoading){
+                                    ProgressView("Menunggu...")
+                                }else{
+                                    ForEach(wordList.filteredFetchedWords, id: \.self) {word in
+                                        NavigationLink(){
+                                            GlobalWordDetailView(word: word)
+                                        }label: {
+                                            GlobalWordCardView(word: word)
+                                        }
                                     }
                                 }
+                                
+                                
                             }
                             
+                        }}.navigationDestination(for: WordModel.self) { word in
+                            WordDetailView(word: word)
                             
-                        }
+                            
+                        }.navigationDestination(for: WordData.self) { word in
+                            GlobalWordDetailView(word: word)}
                         
-                    }.navigationDestination(for: WordModel.self) { word in
-                        WordDetailView(word: word)
                         
-                        
-                    }.navigationDestination(for: WordData.self) { word in
-                        GlobalWordDetailView(word: word)}
-                    
-                    
-                    .padding(.horizontal,32)
+                        .padding(.horizontal,32)
                         .onChange(of: wordList.searchText, perform: { newValue in
                             
                             wordList.filterWordList()
@@ -129,70 +129,70 @@ struct WordLibraryView: View {
                             wordList.filterFetchedWordList()
                             
                         }
-                }
-            }
-            
-        }
-        .background(Color("BgWhite"))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .automatic) {
-                Button(action: {
-                    isAddWord = true
-                    
-                }) {
-                    Label("AddWord", systemImage: "plus")
-                }
-                .foregroundColor(Color(.white))
-                .sheet(isPresented: $isAddWord){
-                    WordAddEditView(tempWord: wordList).environment(\.colorScheme, .light)
-                }
-            }
-            ToolbarItem(placement: .automatic) {
-                Button(action: {
-                    isOpenProfile = true
-                }) {
-                    Label("Profile", systemImage: "person.crop.circle")
-                }
-                .foregroundColor(Color(.white))
-                .sheet(isPresented: $isOpenProfile){
-                    if(UserViewModel.shared.id != 0){
-                        ProfileView() .environment(\.colorScheme, .light)
-                            .presentationDetents([.large])
-                    }else{
-                        SignUpView().environment(\.colorScheme, .light)
-                            .presentationDetents([.large])
                     }
-                    
                 }
+                
             }
+                .background(Color("BgWhite"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .automatic) {
+                        Button(action: {
+                            isAddWord = true
+                            
+                        }) {
+                            Label("AddWord", systemImage: "plus")
+                        }
+                        .foregroundColor(Color(.white))
+                        .sheet(isPresented: $isAddWord){
+                            WordAddEditView(tempWord: wordList).environment(\.colorScheme, .light)
+                        }
+                    }
+                    ToolbarItem(placement: .automatic) {
+                        Button(action: {
+                            isOpenProfile = true
+                        }) {
+                            Label("Profile", systemImage: "person.crop.circle")
+                        }
+                        .foregroundColor(Color(.white))
+                        .sheet(isPresented: $isOpenProfile){
+                            if(UserViewModel.shared.id != 0){
+                                ProfileView() .environment(\.colorScheme, .light)
+                                    .presentationDetents([.large])
+                            }else{
+                                SignUpView().environment(\.colorScheme, .light)
+                                    .presentationDetents([.large])
+                            }
+                            
+                        }
+                    }
+                }
+            //        .navigationTitle("My Home")
+                .onOpenURL(perform: { (url) in
+                    self.isAddWord = url == URL(string: "game:///link1")!
+                    self.isOpenProfile = url == URL(string: "game:///link2")!
+                    
+                })
         }
-        //        .navigationTitle("My Home")
-        .onOpenURL(perform: { (url) in
-            self.isAddWord = url == URL(string: "game:///link1")!
-            self.isOpenProfile = url == URL(string: "game:///link2")!
-            
-        })
+        
+        //    function dynamicSort() {
+        //        var sortOrder = 1;
+        //        if(property[0] === "-") {
+        //            sortOrder = -1;
+        //            property = property.substr(1);
+        //        }
+        //        return function (a,b) {
+        //            /* next line works with strings and numbers,
+        //             * and you may want to customize it to your needs
+        //             */
+        //            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        //            return result * sortOrder;
+        //        }
+        //    }
     }
     
-//    function dynamicSort() {
-//        var sortOrder = 1;
-//        if(property[0] === "-") {
-//            sortOrder = -1;
-//            property = property.substr(1);
-//        }
-//        return function (a,b) {
-//            /* next line works with strings and numbers,
-//             * and you may want to customize it to your needs
-//             */
-//            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-//            return result * sortOrder;
-//        }
-//    }
-}
-
-struct WordLibraryView_Previews: PreviewProvider {
-    static var previews: some View {
-        WordLibraryView()
+    struct WordLibraryView_Previews: PreviewProvider {
+        static var previews: some View {
+            WordLibraryView()
+        }
     }
-}
