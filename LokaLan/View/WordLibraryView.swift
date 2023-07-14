@@ -145,7 +145,7 @@ struct WordLibraryView: View {
                         }
                         .foregroundColor(Color(.white))
                         .sheet(isPresented: $isAddWord){
-                            WordAddEditView(tempWord: wordList).environment(\.colorScheme, .light)
+                            WordAddEditView(tempWord: WordViewModel().environment(\.colorScheme, .light)
                         }
                     }
                     ToolbarItem(placement: .automatic) {
