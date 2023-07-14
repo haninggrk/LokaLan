@@ -24,7 +24,9 @@ struct WordModel: Hashable{
     var audio_path:String{
         return word.audio_path ?? ""
     }
-    
+    var username:String{
+        return word.username ?? ""
+    }
     var downvote: Int32{
         return word.downvote
     }
@@ -45,6 +47,7 @@ struct WordModel: Hashable{
         get{
             return word.published_id != 0        }
     }
+    
     var meaning: String{
         return word.meaning ?? ""
     }
@@ -67,7 +70,13 @@ struct WordModel: Hashable{
             return word.published_id
         }
     }
-    
+    var user_id: Int32{
+        set{
+            word.user_id = (newValue)
+        }get{
+            return word.user_id
+        }
+    }
     func save(){
         WordViewModel.shared.update(word: self)
     }

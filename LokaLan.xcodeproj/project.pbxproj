@@ -34,6 +34,8 @@
 		CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5034D42A4BE1FC000EA890 /* SmallButton.swift */; };
 		CC71E4522A5F7DAA0071CA45 /* AudioDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71E4512A5F7DAA0071CA45 /* AudioDownloader.swift */; };
 		CC71E4542A5F87120071CA45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71E4532A5F87120071CA45 /* User.swift */; };
+		CC71E4562A5F907F0071CA45 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71E4552A5F907F0071CA45 /* UserResponse.swift */; };
+		CC71E4582A5FF1520071CA45 /* GlobalWordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71E4572A5FF1520071CA45 /* GlobalWordDetailView.swift */; };
 		CC9C9C742A525972009CB9FA /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9C9C732A525972009CB9FA /* WordResponse.swift */; };
 		CC9C9C762A527AFB009CB9FA /* GlobalWordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9C9C752A527AFB009CB9FA /* GlobalWordCardView.swift */; };
 		CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA7916C2A49B27B00CACC8F /* WordCardView.swift */; };
@@ -102,6 +104,8 @@
 		CC5034D42A4BE1FC000EA890 /* SmallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButton.swift; sourceTree = "<group>"; };
 		CC71E4512A5F7DAA0071CA45 /* AudioDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDownloader.swift; sourceTree = "<group>"; };
 		CC71E4532A5F87120071CA45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CC71E4552A5F907F0071CA45 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		CC71E4572A5FF1520071CA45 /* GlobalWordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordDetailView.swift; sourceTree = "<group>"; };
 		CC9C9C732A525972009CB9FA /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
 		CC9C9C752A527AFB009CB9FA /* GlobalWordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordCardView.swift; sourceTree = "<group>"; };
 		CCA7916C2A49B27B00CACC8F /* WordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				CC9C9C732A525972009CB9FA /* WordResponse.swift */,
+				CC71E4552A5F907F0071CA45 /* UserResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				301B95442A4E677C00E9B0F8 /* ProfileView.swift */,
 				449E3BF62A580E8500313D29 /* SignUpView.swift */,
 				449E3BF82A58108C00313D29 /* Onboarding.swift */,
+				CC71E4572A5FF1520071CA45 /* GlobalWordDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */,
 				CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */,
 				449E3BF92A58108C00313D29 /* Onboarding.swift in Sources */,
+				CC71E4582A5FF1520071CA45 /* GlobalWordDetailView.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
 				CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */,
 				CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */,
@@ -428,6 +435,7 @@
 				CC1F6E992A44031A00601299 /* WordViewModel.swift in Sources */,
 				CC9C9C762A527AFB009CB9FA /* GlobalWordCardView.swift in Sources */,
 				CC13EAD92A4A82960058113C /* CustomTextField.swift in Sources */,
+				CC71E4562A5F907F0071CA45 /* UserResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +457,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GZ3Q649L8X;
+				DEVELOPMENT_TEAM = MBAFTNRS2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget_lokalan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget_lokalan;
@@ -476,7 +484,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GZ3Q649L8X;
+				DEVELOPMENT_TEAM = MBAFTNRS2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget_lokalan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget_lokalan;
@@ -619,7 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LokaLan/Preview Content\"";
-				DEVELOPMENT_TEAM = GZ3Q649L8X;
+				DEVELOPMENT_TEAM = MBAFTNRS2X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
@@ -651,7 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LokaLan/Preview Content\"";
-				DEVELOPMENT_TEAM = GZ3Q649L8X;
+				DEVELOPMENT_TEAM = MBAFTNRS2X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";

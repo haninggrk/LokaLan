@@ -43,24 +43,40 @@ struct GlobalWordCardView: View {
                         }
                     }
                     
-                    Text("by andre02").font(.footnote.weight(.light)).padding(.top,5)
+                    Text("by \(word.username)").font(.footnote.weight(.light)).padding(.top,5)
                     HStack{
                         HStack {
                             Button{
-                                
+                                if(UserViewModel.shared.id != 0){
+                                    if(word.hasLiked == "false"){
+                                        WordViewModel.shared.createWordLike(wordId: String(word.id), like: true)
+                                    }else if(word.hasLiked == "hated"){
+                                        WordViewModel.shared.updateWordLike(wordId: String(word.id), like: true)
+                                    }else{
+                                        WordViewModel.shared.deleteWordLike(wordId: String(word.id))
+                                    }
+                                }
                             }label: {
-                                Image(systemName: isThumbsUp ?"hand.thumbsup.fill" : "hand.thumbsup").resizable().frame(width: 15,height: 15).foregroundColor(Color("Blue"))
+                                Image(systemName: word.hasLiked == "liked" ? "hand.thumbsup.fill" : "hand.thumbsup").resizable().frame(width: 15,height: 15).foregroundColor(Color("Blue"))
                             }
-                            Text("21").font(.footnote).foregroundColor(Color("Blue"))
+                            Text("\(word.upvote)").font(.footnote).foregroundColor(Color("Blue"))
                             
                             Text("|").font(.title2.weight(.light)).padding(.horizontal, 5).foregroundColor(.gray)
                             
                             Button{
-                                
+                                if(UserViewModel.shared.id != 0){
+                                    if(word.hasLiked == "false"){
+                                        WordViewModel.shared.createWordLike(wordId: String(word.id), like: false)
+                                    }else if(word.hasLiked == "liked"){
+                                        WordViewModel.shared.updateWordLike(wordId: String(word.id), like: false)
+                                    }else{
+                                        WordViewModel.shared.deleteWordLike(wordId: String(word.id))
+                                    }
+                                }
                             }label: {
-                                Image(systemName: isThumbsDown ?"hand.thumbsdown.fill" : "hand.thumbsdown").resizable().frame(width: 15,height: 15)
+                                Image(systemName: word.hasLiked == "hated" ? "hand.thumbsdown.fill" : "hand.thumbsdown").resizable().frame(width: 15,height: 15)
                             }
-                            Text("1").font(.footnote)
+                            Text("\(word.downvote)").font(.footnote)
                         }
                         .padding(5)
                         .padding(.horizontal, 10)
@@ -68,35 +84,31 @@ struct GlobalWordCardView: View {
                         .cornerRadius(5)
                         
                         Spacer()
-                        
-                        SmallButton(label: "Lokal", systemImage: "plus", color: Color("Blue"), is_activated: false){
+                        SmallButton(label: "Lokal", systemImage: "plus", color: Color("Blue"), is_activated: WordViewModel.shared.getWordByPublishedID(id: word.id)){
                             showingDeleteAlert = true
                         }
-                        .alert("Hapus dari lokal ?", isPresented: $showingDeleteAlert) {
+                        .alert(WordViewModel.shared.getWordByPublishedID(id: word.id) ? "Hapus dari lokal ?" : "Tambahkan ke Lokal", isPresented: $showingDeleteAlert) {
                             Button("Ya", role: .destructive) {
-                                
+                                if(!WordViewModel.shared.getWordByPublishedID(id: word.id)){
+                                    WordViewModel.shared.addWordToLocalLibrary(wordData: word)
+                                    WordViewModel.shared.getAllWords()
+                                    showingDeleteAlert = false
+                                }else{
+                                    WordViewModel.shared.delete(word: WordViewModel.shared.getWordModelByPublishedID(id: word.id))
+                                    WordViewModel.shared.getAllWords()
+                                    showingDeleteAlert = false
+                                }
                             }
                             Button("Tidak", role: .cancel) {
-                                
+                                showingDeleteAlert = false
+
                             }
                         }
                     }
                 }.foregroundColor(.black)
                 Spacer()
-                Button{
-                    player.playOnlineAudio(url: word.audio_path ?? "")
-                    print(word.audio_path ?? "")
-                }label: {
-                    Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 35,height: 35).foregroundColor(.blue)
-                }
-                HStack{
-                    Button{
-                        WordViewModel.shared.addWordToLocalLibrary(wordData: word)
-                        WordViewModel.shared.getAllWords()
-                    }label: {
-                        Text("Add to Local")
-                    }
-                }
+
+              
             }.padding(.bottom,15)
             HStack{
                 

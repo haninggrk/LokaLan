@@ -11,13 +11,19 @@ struct SignUpView: View {
     @State var userName = ""
     @State var userEmail = ""
     @State var userPassword = ""
-    
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
                 HStack{
                     Text("Sudah punya akun?")
-                    Text("Masuk") //nanti dibuat nge link ke LoginView
+                    NavigationLink{
+                        LoginView()
+                    }label: {
+                        Text("Masuk")
+                    }
+                  
                 }
                 .padding(.bottom)
                 .padding(.horizontal)
@@ -29,7 +35,8 @@ struct SignUpView: View {
                 Text("Kata Sandi").bold()
                 CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
                 Button{
-    
+                    UserViewModel.shared.register(username:userName, password: userPassword, email: userEmail)
+                    dismiss()
                 } label: {
                     Text("Daftar")
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -44,7 +51,7 @@ struct SignUpView: View {
                 .padding(.horizontal)
                 Spacer()
             }
-            .navigationTitle("Buat akun anda")
+            .navigationTitle("Daftar")
             .background(
                 LinearGradient(gradient: Gradient(colors: [Color("BgPurple"),.white, .white,.white, .white, .white, .white, Color("BgPurple")]), startPoint: .top, endPoint: .bottom).ignoresSafeArea())
         }

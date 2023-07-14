@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State var userName = ""
-    @State var userId = ""
-    @State var userEmail = ""
+    @State var userName = UserViewModel.shared.username
+    @State var userId = String(UserViewModel.shared.id)
+    @State var userEmail = UserViewModel.shared.email
     @State var userPassword = ""
     @Environment(\.dismiss) private var dismiss
     
@@ -56,7 +56,8 @@ struct ProfileView: View {
                         }
                         Spacer()
                         Button{
-                            
+                            UserViewModel.shared.logout()
+                            dismiss()
                         }label: {
                             Text("Keluar").foregroundColor(Color(.red)).underline().padding(.bottom,40)
                         }

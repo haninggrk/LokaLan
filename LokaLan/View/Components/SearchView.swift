@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var isOpenSpeech = false
-    @State private var searchText = ""
+    @Binding  var searchText:String
     
     var body: some View {
         HStack {
@@ -33,9 +33,9 @@ struct SearchView: View {
             .foregroundColor(Color("Blue"))
     }
 }
-
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
+//
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        SearchView()
+//    }
+//}

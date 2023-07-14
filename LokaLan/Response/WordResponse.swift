@@ -19,6 +19,8 @@ struct WordData: Codable, Hashable {
     var created_at: String
     var updated_at: String
     var usage_examples: String?
+    var username: String
+    var hasLiked: String
 }
 
 struct WordAPIResponse: Codable {

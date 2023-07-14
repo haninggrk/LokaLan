@@ -7,10 +7,9 @@
 
 import SwiftUI
 import AVFoundation
-struct WordDetailView: View {
-    @State var isEdit = false
+struct GlobalWordDetailView: View {
     var vm = WordViewModel()
-    var word:WordModel
+    var word:WordData
     
     var body: some View {
         ZStack {
@@ -35,18 +34,7 @@ struct WordDetailView: View {
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        isEdit = true
-                    }) {
-                        Text("Ubah")
-                        
-                    }.foregroundColor(Color(.white)).sheet(isPresented: $isEdit){
 
-                        WordAddEditView(tempWord: vm )
-                    }
-                    
-                }
             }
                     
             VStack {
@@ -54,12 +42,14 @@ struct WordDetailView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             HStack{
-                                Text("\(word.name)")
+                                Text("\(word.word)")
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.black))
                                 Button(action: {
-                                    AudioPlayer.shared.playAudio(url: word.audio_path)
+                                    if let audiopath = word.audio_path{
+                                        AudioPlayer.shared.playAudio(url: audiopath)
+                                    }
                                 }) {
                                     Image(systemName: "speaker.wave.2.fill").bold()
                                 }
@@ -87,7 +77,7 @@ struct WordDetailView: View {
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("\(word.desc)")
+                        Text("\(word.meaning)")
                             .font(.body)
                             .italic()
                             .foregroundColor(.black)
@@ -109,7 +99,7 @@ struct WordDetailView: View {
                             .italic()
                             .foregroundColor(.black)
                             .padding(.bottom)
-                        Text("\(word.usage_examples)")
+                        Text("\(word.usage_examples ?? "" )")
                             .font(.body)
                             .italic()
                             .foregroundColor(.black)
@@ -129,53 +119,8 @@ struct WordDetailView: View {
             .padding(.trailing, 20)
             .padding(.top, 30)
         }
-        .background(Color("BgWhite")).onAppear{
-            vm.name = word.name
-            vm.desc = word.desc
-            vm.usage_examples = word.usage_examples
-            vm.meaning = word.meaning
-        }
+        .background(Color("BgWhite"))
     }
 }
 
-struct CustomCorners: View {
-    var color: LinearGradient
-    var tl: CGFloat = 0.0
-    var tr: CGFloat = 0.0
-    var bl: CGFloat = 0.0
-    var br: CGFloat = 0.0
-    
-    var body: some View {
-        GeometryReader { geometry in
-            Path { path in
-                
-                let w = geometry.size.width
-                let h = geometry.size.height
-                
-                // Make sure we do not exceed the size of the rectangle
-                let tr = min(min(self.tr, h/2), w/2)
-                let tl = min(min(self.tl, h/2), w/2)
-                let bl = min(min(self.bl, h/2), w/2)
-                let br = min(min(self.br, h/2), w/2)
-                
-                path.move(to: CGPoint(x: w / 2.0, y: 0))
-                path.addLine(to: CGPoint(x: w - tr, y: 0))
-                path.addArc(center: CGPoint(x: w - tr, y: tr), radius: tr, startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 0), clockwise: false)
-                path.addLine(to: CGPoint(x: w, y: h - br))
-                path.addArc(center: CGPoint(x: w - br, y: h - br), radius: br, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
-                path.addLine(to: CGPoint(x: bl, y: h))
-                path.addArc(center: CGPoint(x: bl, y: h - bl), radius: bl, startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 180), clockwise: false)
-                path.addLine(to: CGPoint(x: 0, y: tl))
-                path.addArc(center: CGPoint(x: tl, y: tl), radius: tl, startAngle: Angle(degrees: 180), endAngle: Angle(degrees: 270), clockwise: false)
-                path.closeSubpath()
-            }
-            .fill(self.color)
-        }
-    }
-}
 
-struct WordDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        WordDetailView(word:WordViewModel.shared.words[0])
-    }
-}

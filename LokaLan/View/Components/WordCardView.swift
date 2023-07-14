@@ -21,7 +21,7 @@ struct WordCardView: View {
         VStack{
             HStack{
                 VStack(alignment: .leading){
-                    Text("\(word.name)").font(.title.weight(.bold)).padding(.bottom,4)
+                    Text("\(word.name) ").font(.title.weight(.bold)).padding(.bottom,4)
                     Text("\(word.meaning)").font(.title3.weight(.light))
                 }.foregroundColor(.black)
                 Spacer()
@@ -41,22 +41,25 @@ struct WordCardView: View {
                     word.save()
                     wordViewmodel.getAllWords()
                 }
-                SmallButton(label: "Global", systemImage: "globe", color: Color("Blue"),is_activated: word.is_published){
-                    if(word.is_published){
-                        showingUnpublishedAlert = true
-                    }else{
-                        word.pushToGlobal()
+                if(word.user_id == UserViewModel.shared.id){
+                    SmallButton(label: "Global ", systemImage: "globe", color: Color("Blue"),is_activated: word.is_published){
+                        if(word.is_published){
+                            showingUnpublishedAlert = true
+                        }else{
+                            word.pushToGlobal()
+                        }
+                        wordViewmodel.getAllWords()
+                    }       .alert("Batalkan Publikasi ?", isPresented: $showingUnpublishedAlert) {
+                        Button("Ya", role: .destructive) {
+                            word.unpublish()
+                        }
+                        Button("Tidak", role: .cancel) {
+                            
+                        }
                     }
-                    wordViewmodel.getAllWords()
                 }
-                .alert("Batalkan Publikasi ?", isPresented: $showingUnpublishedAlert) {
-                    Button("Ya", role: .destructive) {
-                        word.unpublish()
-                    }
-                    Button("Tidak", role: .cancel) {
-                        
-                    }
-                }
+         
+                
                 Spacer()
                 SmallButton(label: "Hapus", systemImage: "trash", color: Color.red, is_activated: dummyBool){
                     showingDeleteAlert = true

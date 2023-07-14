@@ -9,7 +9,6 @@ import Foundation
 
 func downloadAudioFromURL(_ url: URL, completion: @escaping (URL?) -> Void) {
     let destinationURL = getDocumentsDirectory().appendingPathComponent("audio.wav")
-    print("Hi")
     let task = URLSession.shared.downloadTask(with: url) { (location, _, error) in
         if let error = error {
             print("Error downloading audio file: \(error)")

@@ -120,6 +120,7 @@ struct WordAddEditView: View {
                         }
                     }
                     .navigationTitle("Tambah")
+                  
                     .navigationBarTitleDisplayMode(.inline)
                 }
             }

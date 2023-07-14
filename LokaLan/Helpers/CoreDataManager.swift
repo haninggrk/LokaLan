@@ -14,7 +14,19 @@ class CoreDataManager{
         return persistentContainer.viewContext
     }
     
-
+    func getWordByPublishedID(publishedID: Int32) -> Word? {
+        let request: NSFetchRequest<Word> = Word.fetchRequest()
+        request.predicate = NSPredicate(format: "published_id == %d", publishedID)
+        
+        do {
+            let results = try viewContext.fetch(request)
+            return results.first
+        } catch {
+            print("Error fetching word: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
     func getAllWords() -> [Word]{
         let request:NSFetchRequest<Word> = Word.fetchRequest()
         do{

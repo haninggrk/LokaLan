@@ -19,6 +19,7 @@
         <attribute name="published_id" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
         <attribute name="upvote" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="usage_examples" optional="YES" attributeType="String"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
         <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasWords" inverseEntity="User"/>
