@@ -1,46 +1,39 @@
 //
-//  SwiftUIView.swift
+//  ResetPassView.swift
 //  LokaLan
 //
-//  Created by michelle chandra on 07/07/23.
+//  Created by michelle chandra on 14/07/23.
 //
 
 import SwiftUI
 
-struct LoginView: View {
-    @State var userName = ""
+struct ResetPassView: View {
     @State var userPassword = ""
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-                Text("Selamat Datang").font(.title).bold()
+                Text("Atur Ulang Kata Sandi").font(.title).bold()
                     .padding(.horizontal)
                     .padding(.top)
                 
-                Text("Masuk untuk melanjutkan")
+                Text("Masukkan kata sandi baru anda")
                     .foregroundColor(Color.gray)
                     .padding(.bottom)
                     .padding(.horizontal)
                 
                 Group{
-                    Text("Email atau Nama ID").bold().padding(.top)
-                    CustomTextField(text: $userName, placeholder: "Masukan email atau nama ID")
+                    Text("Kata Sandi Baru").bold().padding(.top)
+                    CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi baru")
                     
-                    Text("Kata Sandi").bold()
-                    CustomTextField(text: $userPassword, placeholder: "Masukan kata sandi")
-                    HStack{
-                        Spacer()
-                        Text("Lupa kata sandi?")
-                            .font(.footnote)
-                            .foregroundColor(Color("Blue2"))
-                    }
+                    Text("Konfirmasi Kata Sandi").bold()
+                    CustomTextField(text: $userPassword, placeholder: "Masukan konfirmasi kata sandi")
                     
                     Button{
                         
                     } label: {
-                        Text("Masuk")
+                        Text("Kirim")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .frame(height: 30)
                     }
@@ -49,15 +42,7 @@ struct LoginView: View {
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
                     .tint(Color("Blue2"))
-                    
-                    HStack(spacing: 4){
-                        Spacer()
-                        Text("Belum punya akun?")
-                        Text("Daftar").foregroundColor(Color("Blue2"))
-                        Text("untuk melanjutkan")
-                        Spacer()
-                    }
-                    .font(.footnote)
+
                 }
                 .padding(.horizontal)
                 Spacer()
@@ -76,8 +61,8 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct ResetPassView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        ResetPassView()
     }
 }

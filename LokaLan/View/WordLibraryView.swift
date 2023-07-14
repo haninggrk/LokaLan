@@ -30,18 +30,18 @@ struct WordLibraryView: View {
                 SegmentControlView(submenu: $submenu)
             }
             .background(
-                LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors: [Color("Blue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom)
             )
             if (wordList.words.isEmpty) {
                 Spacer()
                 VStack{
-                    Image(systemName:"key.radiowaves.forward")
+                    Image("Saly1")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 300, height: 300)
                         .padding(.leading, 30)
                     
-                    Text("You don’t have any word yet, add by click ‘+’ icon in the top right corner.")
+                    Text("Kamu masih belum memiliki kata-kata, tambahkan kata dengan klik ikon ‘+’ di pojok kanan atas.")
                         .font(.footnote)
                         .padding(30)
                         .multilineTextAlignment(.center)

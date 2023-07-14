@@ -28,7 +28,7 @@ struct WordDetailView: View {
                 .padding(.top, 80)
                 .padding(.bottom, 120)
                 .background(
-                    CustomCorners(color: LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom), tl: 0, tr: 0, bl: 100, br: 100)
+                    CustomCorners(color: LinearGradient(gradient: Gradient(colors: [Color("Blue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom), tl: 0, tr: 0, bl: 100, br: 100)
                 )
                 Spacer()
             }
@@ -88,7 +88,7 @@ struct WordDetailView: View {
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("\(word.meaning)")
+                        Text("\(word.desc)")
                             .font(.body)
                             .italic()
                             .foregroundColor(.black)

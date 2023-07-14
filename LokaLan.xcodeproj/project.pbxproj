@@ -20,6 +20,9 @@
 		3052FCEB2A591EFA0019783A /* widget_lokalan.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 3052FCE62A591EF90019783A /* widget_lokalan.intentdefinition */; };
 		3052FCEE2A591EFA0019783A /* widget_lokalanExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3052FCD92A591EF90019783A /* widget_lokalanExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3086C2752A51BA4100449459 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3086C2742A51BA4100449459 /* SearchView.swift */; };
+		4488A9CB2A60D2F400CA28B6 /* ForgetPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A9CA2A60D2F400CA28B6 /* ForgetPassView.swift */; };
+		4488A9CD2A60DBE400CA28B6 /* InsertOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A9CC2A60DBE400CA28B6 /* InsertOTP.swift */; };
+		4488A9CF2A60DCBD00CA28B6 /* ResetPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488A9CE2A60DCBD00CA28B6 /* ResetPassView.swift */; };
 		449E3BDB2A57B72A00313D29 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E3BDA2A57B72A00313D29 /* LoginView.swift */; };
 		449E3BF72A580E8500313D29 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E3BF62A580E8500313D29 /* SignUpView.swift */; };
 		44DB95A92A5F968500699A1B /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DB95A82A5F968500699A1B /* VerificationView.swift */; };
@@ -86,6 +89,9 @@
 		3052FCE72A591EFA0019783A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3052FCE92A591EFA0019783A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3086C2742A51BA4100449459 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		4488A9CA2A60D2F400CA28B6 /* ForgetPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassView.swift; sourceTree = "<group>"; };
+		4488A9CC2A60DBE400CA28B6 /* InsertOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertOTP.swift; sourceTree = "<group>"; };
+		4488A9CE2A60DCBD00CA28B6 /* ResetPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassView.swift; sourceTree = "<group>"; };
 		449E3BDA2A57B72A00313D29 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		449E3BF62A580E8500313D29 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		44DB95A82A5F968500699A1B /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
@@ -247,6 +253,9 @@
 				301B95442A4E677C00E9B0F8 /* ProfileView.swift */,
 				449E3BF62A580E8500313D29 /* SignUpView.swift */,
 				44DB95A82A5F968500699A1B /* VerificationView.swift */,
+				4488A9CA2A60D2F400CA28B6 /* ForgetPassView.swift */,
+				4488A9CC2A60DBE400CA28B6 /* InsertOTP.swift */,
+				4488A9CE2A60DCBD00CA28B6 /* ResetPassView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -390,6 +399,7 @@
 				449E3BDB2A57B72A00313D29 /* LoginView.swift in Sources */,
 				CC9C9C742A525972009CB9FA /* WordResponse.swift in Sources */,
 				301B95492A4E72C900E9B0F8 /* BarView.swift in Sources */,
+				4488A9CF2A60DCBD00CA28B6 /* ResetPassView.swift in Sources */,
 				CCAD30AC2A42A0E10074C325 /* LokaLan.xcdatamodeld in Sources */,
 				CCAD30A92A429FED0074C325 /* UserViewModel.swift in Sources */,
 				CC5034D52A4BE1FC000EA890 /* SmallButton.swift in Sources */,
@@ -397,12 +407,14 @@
 				CCAD30862A428C820074C325 /* ContentView.swift in Sources */,
 				CCA791712A49B50300CACC8F /* RoundedCorner.swift in Sources */,
 				CCA7916D2A49B27B00CACC8F /* WordCardView.swift in Sources */,
+				4488A9CB2A60D2F400CA28B6 /* ForgetPassView.swift in Sources */,
 				CCAD30A72A429E930074C325 /* CoreDataManager.swift in Sources */,
 				CC13EADB2A4A8A970058113C /* CustomTextEditor.swift in Sources */,
 				CC13EAD72A4A760D0058113C /* WordAddEditView.swift in Sources */,
 				CCA7916F2A49B4D200CACC8F /* WordLibraryView.swift in Sources */,
 				3086C2752A51BA4100449459 /* SearchView.swift in Sources */,
 				301B954B2A4E7DE500E9B0F8 /* SpeechRecognizer.swift in Sources */,
+				4488A9CD2A60DBE400CA28B6 /* InsertOTP.swift in Sources */,
 				3052FCEB2A591EFA0019783A /* widget_lokalan.intentdefinition in Sources */,
 				449E3BF72A580E8500313D29 /* SignUpView.swift in Sources */,
 				301B95472A4E6C9200E9B0F8 /* SpeechToTextView.swift in Sources */,

@@ -1,13 +1,13 @@
 //
-//  VerificationView.swift
+//  InsertOTP.swift
 //  LokaLan
 //
-//  Created by michelle chandra on 13/07/23.
+//  Created by michelle chandra on 14/07/23.
 //
 
 import SwiftUI
 
-struct VerificationView: View {
+struct InsertOTP: View {
     @Environment(\.dismiss) private var dismiss
     @State var pinOne = ""
     @State var pinTwo = ""
@@ -17,27 +17,27 @@ struct VerificationView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-                Text("Verifikasi Email Anda").font(.title).bold()
+                Text("Masukkan Kode OTP").font(.title).bold()
                     .padding(.horizontal)
                     .padding(.top)
+                    .padding(.bottom, 4)
                 
-                Text("Kami mengirimkan kode untuk verifikasi akun anda")
+                Text("Kami mengirimkan kode verifikasi untuk merubah password anda")
                     .foregroundColor(.gray)
                     .padding(.bottom)
                     .padding(.horizontal)
                 Group{
                     Text("Email telah dikirim ke :")
                         .foregroundColor(.gray)
-                    
                     Text("jesslyn.sudarsono@gmail.com")
                         .foregroundColor(.gray)
                     
                     HStack {
                         Spacer()
-                        RoundedRectangleTextField(text: $pinOne)
-                        RoundedRectangleTextField(text: $pinTwo)
-                        RoundedRectangleTextField(text: $pinThree)
-                        RoundedRectangleTextField(text: $pinFour)
+                        RoundedRectangleTextField2(text: $pinOne)
+                        RoundedRectangleTextField2(text: $pinTwo)
+                        RoundedRectangleTextField2(text: $pinThree)
+                        RoundedRectangleTextField2(text: $pinFour)
                         Spacer()
                     }
                     .padding(.top, 36)
@@ -48,7 +48,7 @@ struct VerificationView: View {
                         Text("Saya tidak menerima kode")
                             .foregroundColor(.gray)
                         Spacer()
-                    }
+                    }.padding(.top)
                     HStack{
                         Spacer()
                         Text("Kirim ulang")
@@ -68,7 +68,6 @@ struct VerificationView: View {
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
                     .tint(Color("Blue2"))
-                    
                 }
                 .padding(.horizontal)
                 Spacer()
@@ -87,7 +86,7 @@ struct VerificationView: View {
     }
 }
 
-struct RoundedRectangleTextField: View {
+struct RoundedRectangleTextField2: View {
     @Binding var text: String
     
     var body: some View {
@@ -110,8 +109,8 @@ struct RoundedRectangleTextField: View {
     }
 }
 
-struct VerificationView_Previews: PreviewProvider {
+struct InsertOTP_Previews: PreviewProvider {
     static var previews: some View {
-        VerificationView()
+        InsertOTP()
     }
 }

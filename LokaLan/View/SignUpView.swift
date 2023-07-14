@@ -16,13 +16,12 @@ struct SignUpView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-                Text("Buat Akun Anda").font(.largeTitle).bold()
+                Text("Buat Akun Anda").font(.title).bold()
                     .padding(.horizontal)
                     .padding(.top)
                 
                     Text("Buat akun untuk melanjutkan")
                         .foregroundColor(Color.gray)
-                        .padding(.bottom)
                         .padding(.horizontal)
                 Group{
                     Text("Nama ID").bold().padding(.top)
@@ -37,7 +36,7 @@ struct SignUpView: View {
                     HStack{
                         Image(systemName: "checkmark.circle")
                         Text("Saya menerima Syarat dan Ketentuan layanan dan setuju dengan Kebijakan Privasi ini")
-                            .font(.system(size: 14))
+                            .font(.footnote)
                             .foregroundColor(.gray)
                     } .padding(.top)
                     
@@ -61,7 +60,7 @@ struct SignUpView: View {
                         Text("untuk melanjutkan")
                         Spacer()
                     }
-                    .font(.system(size: 14))
+                    .font(.footnote)
                 }
                 .padding(.horizontal)
                 Spacer()
