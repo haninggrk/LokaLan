@@ -14,29 +14,45 @@ struct WordLibraryView: View {
     @State private var isOpenProfile = false
     @State private var isOpenSpeech = false
     @State private var isOpenFilter = false
+//    @State private var words = []
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
+    @State private var selectedFilter: String = "A-Z"
+    let filter = ["A-Z", "Terbaru", "Popularitas", "Global"]
+    
     var body: some View {
         VStack {
             VStack{
-
                 VStack(alignment: .leading){
                     Text("Kosakata").font(.largeTitle.weight(.bold)).foregroundColor(.white).padding(.bottom,-1)
                     HStack {
                         SearchView(searchText: $wordList.searchText)
                         
-                        Button(action: {
-                            isOpenFilter = true
-                        }) {
+                        Menu {
+                            ForEach(filter, id: \.self) {filterResult in
+                                Button(action: {
+                                    selectedFilter = filterResult
+                                }, label: {
+                                    HStack {
+                                        Text (filterResult)
+                                        Spacer()
+                                        if(selectedFilter == filterResult){
+                                            Image(systemName: "checkmark")
+                                            if (selectedFilter == "A-Z"){
+//                                               words =  wordList.words
+                                                
+                                            }
+                                        }
+                                    }
+                                })
+                            }
+                        } label: {
                             Image(systemName: "slider.horizontal.3")
                                 .resizable()
                                 .frame(width: 20, height: 18)
                                 .padding(.leading, 10)
-                        }
-                        .foregroundColor(Color(.white))
-                        .sheet(isPresented: $isOpenFilter){
-                            WordAddEditView(tempWord: wordList)
+                                .foregroundColor(Color(.white))
                         }
                     }
                 }
@@ -47,31 +63,30 @@ struct WordLibraryView: View {
             .background(
                 LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom)
             )
-            
-            ScrollView {
+            if (wordList.words.isEmpty && submenu == 0) {
+                Spacer()
                 VStack{
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
-                        if(submenu == 0){
-                            if (wordList.words.isEmpty) {
-                                Spacer()
-                                VStack{
-                                    Image(systemName:"key.radiowaves.forward")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 100)
-                                        .padding(.leading, 30)
-                                    
-                                    Text("You don’t have any word yet, add by click ‘+’ icon in the top right corner.")
-                                        .font(.footnote)
-                                        .padding(30)
-                                        .multilineTextAlignment(.center)
-                                }
-                                .foregroundColor(.gray)
-                                Spacer()
-                            }else{
+                    Image("Saly1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 300)
+                    
+                    Text("You don’t have any word yet, add by click ‘+’ icon in the top right corner.")
+                        .font(.footnote)
+                        .padding()
+                        .multilineTextAlignment(.center)
+                }
+                .foregroundColor(.gray)
+                Spacer()
+            }else{
+                ScrollView {
+                    VStack{
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 200))]) {
+                            if(submenu == 0){
                                 ForEach(wordList.filteredWordList, id: \.self) {word in
                                     NavigationLink(){
                                         WordDetailView(word: word)
+//                                            .navigationBarBackButtonHidden(true)
                                     }label:{
                                         WordCardView(word:word)
                                     }.padding(.vertical,3)
@@ -156,8 +171,24 @@ struct WordLibraryView: View {
         .onOpenURL(perform: { (url) in
             self.isAddWord = url == URL(string: "game:///link1")!
             self.isOpenProfile = url == URL(string: "game:///link2")!
+            
         })
     }
+    
+//    function dynamicSort() {
+//        var sortOrder = 1;
+//        if(property[0] === "-") {
+//            sortOrder = -1;
+//            property = property.substr(1);
+//        }
+//        return function (a,b) {
+//            /* next line works with strings and numbers,
+//             * and you may want to customize it to your needs
+//             */
+//            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+//            return result * sortOrder;
+//        }
+//    }
 }
 
 struct WordLibraryView_Previews: PreviewProvider {
