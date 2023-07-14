@@ -86,6 +86,11 @@ struct WordAddEditView: View {
                             HStack {
                                 Spacer()
                                 Button{
+                                    if (isRecording){
+                                        tempWord.startRecording()
+                                    }else{
+                                        
+                                    }
                                     isRecording.toggle()
                                     print(isRecording)
                                 }label: {

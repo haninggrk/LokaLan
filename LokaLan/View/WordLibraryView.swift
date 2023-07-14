@@ -15,6 +15,7 @@ struct WordLibraryView: View {
     @State private var isOpenProfile = false
     @State private var isOpenSpeech = false
     @State private var isOpenFilter = false
+//    @State private var words = []
     @StateObject private var wordList = WordViewModel.shared
     @State private var isAddingWord = false
     @State var submenu: Int = 0
@@ -39,6 +40,10 @@ struct WordLibraryView: View {
                                         Spacer()
                                         if(selectedFilter == filterResult){
                                             Image(systemName: "checkmark")
+                                            if (selectedFilter == "A-Z"){
+//                                               words =  wordList.words
+                                                
+                                            }
                                         }
                                     }
                                 })
@@ -82,7 +87,7 @@ struct WordLibraryView: View {
                                 ForEach(wordList.words, id: \.self) {word in
                                     NavigationLink(){
                                         WordDetailView(word: word)
-                                            .navigationBarBackButtonHidden(true)
+//                                            .navigationBarBackButtonHidden(true)
                                     }label:{
                                         WordCardView(word:word)
                                     }.padding(.vertical,3)
@@ -150,6 +155,21 @@ struct WordLibraryView: View {
             
         })
     }
+    
+//    function dynamicSort() {
+//        var sortOrder = 1;
+//        if(property[0] === "-") {
+//            sortOrder = -1;
+//            property = property.substr(1);
+//        }
+//        return function (a,b) {
+//            /* next line works with strings and numbers,
+//             * and you may want to customize it to your needs
+//             */
+//            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+//            return result * sortOrder;
+//        }
+//    }
 }
 
 struct WordLibraryView_Previews: PreviewProvider {
