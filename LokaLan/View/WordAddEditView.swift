@@ -13,7 +13,9 @@ struct WordAddEditView: View {
     @ObservedObject var tempWord: WordViewModel
     @StateObject private var wordList = WordViewModel.shared
     @State var isRecording = false
+    @State var inputText = ""
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var player = AudioPlayer()
     
     private func normalizeSoundLevel(level: Float) -> CGFloat {
         let level = max(0.5, CGFloat(level) + 30) / 2 // between 0.1 and 25
@@ -49,7 +51,13 @@ struct WordAddEditView: View {
                                     CustomTextField(text:  $tempWord.name, placeholder: "Masukkan kata")
                                     HStack{
                                         Spacer()
-                                        Image(systemName: "speaker.wave.2.circle").padding(10).foregroundColor(.gray)
+                                        Button{
+                                            player.playAudio(url: tempWord
+                                                .audio_path)
+                                            print(tempWord.audio_path )
+                                        }label: {
+                                            Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").padding(10).foregroundColor(tempWord.audio_path == "" ? .gray : Color("Blue"))
+                                        }.disabled(tempWord.audio_path == "")
                                     }
                                 }
                             }.padding(.bottom, 15)
@@ -78,22 +86,24 @@ struct WordAddEditView: View {
                             HStack {
                                 Spacer()
                                 Button{
-                                    if(isRecording){
-                                        tempWord.stopRecording()
-                                    }else{
-                                        tempWord.startRecording()
-                                        
-                                    }
                                     isRecording.toggle()
+                                    print(isRecording)
+                                }label: {
+                                    Image(systemName: isRecording ? "stop": "mic.circle.fill")
+                                        .resizable()
+                                        .frame(width: isRecording ? 40:60,height: isRecording ? 40:60)
+                                        .padding()
+                                        .cornerRadius(100)
+                                        .foregroundColor(Color("Blue"))
                                 }
-                            label: {
-                                Image(systemName: isRecording ? "stop": "mic.circle.fill")
-                                    .resizable()
-                                    .frame(width: isRecording ? 40:60,height: isRecording ? 40:60)
-                                    .padding()
-                                    .cornerRadius(100)
-                                    .foregroundColor(Color("Blue"))
-                            }
+                                .sheet(isPresented: $isRecording){
+                                    SpeechToTextView(searchText: $tempWord.name)
+                                        .presentationDetents([.fraction(0.28)])
+                                        .presentationDragIndicator(.visible)
+                                        .onDisappear(){
+                                            tempWord.stopRecording()
+                                        }
+                                }
                                 Spacer()
                             }
                         }

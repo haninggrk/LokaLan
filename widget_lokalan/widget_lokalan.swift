@@ -200,3 +200,4 @@ struct widget_lokalan_Previews: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+

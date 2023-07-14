@@ -59,7 +59,7 @@ struct WordLibraryView: View {
             .background(
                 LinearGradient(gradient: Gradient(colors: [Color("BgBlue"),Color("BgPurple")]), startPoint: .top, endPoint: .bottom)
             )
-            if (wordList.words.isEmpty) {
+            if (wordList.words.isEmpty && submenu == 0) {
                 Spacer()
                 VStack{
                     Image("Saly1")
@@ -82,6 +82,7 @@ struct WordLibraryView: View {
                                 ForEach(wordList.words, id: \.self) {word in
                                     NavigationLink(){
                                         WordDetailView(word: word)
+                                            .navigationBarBackButtonHidden(true)
                                     }label:{
                                         WordCardView(word:word)
                                     }.padding(.vertical,3)
@@ -146,6 +147,7 @@ struct WordLibraryView: View {
         .onOpenURL(perform: { (url) in
             self.isAddWord = url == URL(string: "game:///link1")!
             self.isOpenProfile = url == URL(string: "game:///link2")!
+            
         })
     }
 }
