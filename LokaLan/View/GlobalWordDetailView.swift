@@ -77,7 +77,7 @@ struct GlobalWordDetailView: View {
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("\(word.meaning)")
+                        Text("\(word.description ?? "")")
                             .font(.body)
                             .italic()
                             .foregroundColor(.black)

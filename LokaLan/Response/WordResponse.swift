@@ -20,7 +20,7 @@ struct WordData: Codable, Hashable {
     var updated_at: String
     var usage_examples: String?
     var username: String
-    var hasLiked: String
+    var hasLiked: String?
 }
 
 struct WordAPIResponse: Codable {

@@ -35,6 +35,7 @@ struct GlobalWordCardView: View {
                         VStack {
                             Button{
                                 player.playOnlineAudio(url: word.audio_path ?? "")
+                                print("audio!!!!!!DWQWqwdwqdwq")
                                 print(word.audio_path ?? "")
                             }label: {
                                 Image(systemName: player.isPlaying ?"speaker.wave.2.circle.fill" : "speaker.wave.2.circle").resizable().frame(width: 40,height: 40).foregroundColor(Color("Blue"))
@@ -55,6 +56,8 @@ struct GlobalWordCardView: View {
                                     }else{
                                         WordViewModel.shared.deleteWordLike(wordId: String(word.id))
                                     }
+                                    WordViewModel.shared.fetchWordFromAPI()
+                                    WordViewModel.shared.filterFetchedWordList()
                                 }
                             }label: {
                                 Image(systemName: word.hasLiked == "liked" ? "hand.thumbsup.fill" : "hand.thumbsup").resizable().frame(width: 15,height: 15).foregroundColor(Color("Blue"))
@@ -84,7 +87,7 @@ struct GlobalWordCardView: View {
                         .cornerRadius(5)
                         
                         Spacer()
-                        if(word.user_id == UserViewModel.shared.id){
+                        if(word.user_id != UserViewModel.shared.id){
                             SmallButton(label: "Lokal", systemImage: "plus", color: Color("Blue"), is_activated: WordViewModel.shared.getWordByPublishedID(id: word.id)){
                                 showingDeleteAlert = true
                             }        .alert(WordViewModel.shared.getWordByPublishedID(id: word.id) ? "Hapus dari lokal ?" : "Tambahkan ke Lokal", isPresented: $showingDeleteAlert) {
@@ -92,10 +95,13 @@ struct GlobalWordCardView: View {
                                     if(!WordViewModel.shared.getWordByPublishedID(id: word.id)){
                                         WordViewModel.shared.addWordToLocalLibrary(wordData: word)
                                         WordViewModel.shared.getAllWords()
+                                        WordViewModel.shared.filterWordList()
+
                                         showingDeleteAlert = false
                                     }else{
                                         WordViewModel.shared.delete(word: WordViewModel.shared.getWordModelByPublishedID(id: word.id))
                                         WordViewModel.shared.getAllWords()
+                                        WordViewModel.shared.filterWordList()
                                         showingDeleteAlert = false
                                     }
                                 }
@@ -107,6 +113,8 @@ struct GlobalWordCardView: View {
                         }else{
                             SmallButton(label: "Hapus", systemImage: "trash", color: Color.red, is_activated: dummyBool){
                                 WordViewModel.shared.UnpublishWord(id: word.id) { bool in
+                                    WordViewModel.shared.fetchWordFromAPI()
+                                    WordViewModel.shared.filterFetchedWordList()
                                     
                                 }
                             }

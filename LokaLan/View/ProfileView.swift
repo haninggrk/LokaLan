@@ -29,13 +29,7 @@ struct ProfileView: View {
                                     }
                                     CustomTextField(text: $userName, placeholder: "Masukan nama")
                                 }.padding(.bottom, 15)
-                                VStack {
-                                    HStack {
-                                        Text("Nama ID").font(.subheadline).bold()
-                                        Spacer()
-                                    }
-                                    CustomTextField(text: $userId, placeholder: "Masukkan nama ID")
-                                }.padding(.bottom, 15)
+                               
                                 VStack {
                                     HStack {
                                         Text("Email").font(.subheadline).bold()
@@ -48,7 +42,7 @@ struct ProfileView: View {
                                         Text("Password").font(.subheadline).bold()
                                         Spacer()
                                     }
-                                    CustomTextField(text: $userPassword, placeholder: "Masukan password")
+                                    CustomTextField(text: $userPassword, placeholder: "*********")
                                 }.padding(.bottom, 15)
                             }
                             .padding(.horizontal)

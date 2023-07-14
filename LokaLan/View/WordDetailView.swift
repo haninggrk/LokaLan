@@ -74,21 +74,7 @@ struct WordDetailView: View {
                     }
                     HStack {
                         VStack(alignment: .leading) {
-                            HStack{
-                                Text("\(word.name)")
-                                    .font(.title)
-                                    .bold()
-                                    .foregroundColor(Color(.black))
-                                Button(action: {
-                                    AudioPlayer.shared.playAudio(url: word.audio_path)
-                                }) {
-                                    Image(systemName: "speaker.wave.2.fill").bold()
-                                }
-                                .foregroundColor(Color(.blue))
-                            }
-                           
-                            Spacer()
-                            Text("\(word.meaning)")
+                            Text("\(word.desc)")
                                 .font(.body)
                                 .italic()
                                 .foregroundColor(.black)
@@ -101,14 +87,25 @@ struct WordDetailView: View {
                     }
                     .background(.white)
                     .cornerRadius(20)
-                    .padding(.horizontal,10)    
-                }
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("\(word.desc)")
-                            .font(.body)
-                            .italic()
-                            .foregroundColor(.black)
+                    .padding(.horizontal,10)
+                    .padding(.bottom, 10)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Contoh: ")
+                                .font(.body)
+                                .italic()
+                                .foregroundColor(.black)
+                                .padding(.bottom)
+                            Text("\(word.usage_examples)")
+                                .font(.body)
+                                .italic()
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                        .padding(.horizontal)
+                        .padding(.top)
+                        .padding(.bottom, 60)
+                        Spacer()
                     }
                     .background(.white)
                     .cornerRadius(20)

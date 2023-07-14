@@ -151,6 +151,7 @@ class WordViewModel: ObservableObject{
      
         CoreDataManager.shared.deleteWord(word: existingWord!)
         self.getAllWords()
+        self.filterWordList()
      
 
     }
