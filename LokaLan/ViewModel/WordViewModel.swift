@@ -375,41 +375,37 @@ class WordViewModel: ObservableObject{
         
         print(wordId)
         print(String(UserViewModel.shared.id))
-        let parameters = [
+        let parameters:[String : Any] = [
             "word_id": wordId,
             "user_id": UserViewModel.shared.id,
             "like": 1
-        ] as [String : Any]
+        ]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            request.httpBody = jsonData
         } catch {
             print("Error creating request body: \(error)")
             return
         }
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error: \(error)")
                 return
             }
             
-            guard let data = data else {
-                print("Data is empty")
+            guard let jsonData = data else {
+                print("No data received")
                 return
             }
-            do {
-                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
-                print("Response: \(jsonResponse)")
-            } catch {
-                print("Error parsing response: \(error)")
-            }
-        }
+         
+            
+        }.resume()
         
-        task.resume()
     }
 
     func updateWordLike(wordId: String, like: Bool) {
@@ -474,13 +470,15 @@ class WordViewModel: ObservableObject{
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: [])
+            request.httpBody = jsonData
         } catch {
             print("Error creating request body: \(error)")
             return
         }
+
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {

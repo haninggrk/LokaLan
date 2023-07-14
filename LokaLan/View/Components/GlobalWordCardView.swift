@@ -84,26 +84,34 @@ struct GlobalWordCardView: View {
                         .cornerRadius(5)
                         
                         Spacer()
-                        SmallButton(label: "Lokal", systemImage: "plus", color: Color("Blue"), is_activated: WordViewModel.shared.getWordByPublishedID(id: word.id)){
-                            showingDeleteAlert = true
-                        }
-                        .alert(WordViewModel.shared.getWordByPublishedID(id: word.id) ? "Hapus dari lokal ?" : "Tambahkan ke Lokal", isPresented: $showingDeleteAlert) {
-                            Button("Ya", role: .destructive) {
-                                if(!WordViewModel.shared.getWordByPublishedID(id: word.id)){
-                                    WordViewModel.shared.addWordToLocalLibrary(wordData: word)
-                                    WordViewModel.shared.getAllWords()
+                        if(word.user_id == UserViewModel.shared.id){
+                            SmallButton(label: "Lokal", systemImage: "plus", color: Color("Blue"), is_activated: WordViewModel.shared.getWordByPublishedID(id: word.id)){
+                                showingDeleteAlert = true
+                            }        .alert(WordViewModel.shared.getWordByPublishedID(id: word.id) ? "Hapus dari lokal ?" : "Tambahkan ke Lokal", isPresented: $showingDeleteAlert) {
+                                Button("Ya", role: .destructive) {
+                                    if(!WordViewModel.shared.getWordByPublishedID(id: word.id)){
+                                        WordViewModel.shared.addWordToLocalLibrary(wordData: word)
+                                        WordViewModel.shared.getAllWords()
+                                        showingDeleteAlert = false
+                                    }else{
+                                        WordViewModel.shared.delete(word: WordViewModel.shared.getWordModelByPublishedID(id: word.id))
+                                        WordViewModel.shared.getAllWords()
+                                        showingDeleteAlert = false
+                                    }
+                                }
+                                Button("Tidak", role: .cancel) {
                                     showingDeleteAlert = false
-                                }else{
-                                    WordViewModel.shared.delete(word: WordViewModel.shared.getWordModelByPublishedID(id: word.id))
-                                    WordViewModel.shared.getAllWords()
-                                    showingDeleteAlert = false
+
                                 }
                             }
-                            Button("Tidak", role: .cancel) {
-                                showingDeleteAlert = false
-
+                        }else{
+                            SmallButton(label: "Hapus", systemImage: "trash", color: Color.red, is_activated: dummyBool){
+                                WordViewModel.shared.UnpublishWord(id: word.id) { bool in
+                                    
+                                }
                             }
                         }
+                
                     }
                 }.foregroundColor(.black)
                 Spacer()
