@@ -11,47 +11,58 @@ import Intents
 import Foundation
 
 struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
-    }
+    @AppStorage("language", store: UserDefaults(suiteName: "group.cobaWidget"))
+    var language: SupportedWords = SupportedWords.Surabaya
     
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+    func placeholder(in context: Context) -> WordEntry {
+        WordEntry(date: Date(), word: WidgetWord(name: "Kon", meaning: "Kamu"), language: .Surabaya, configuration: ConfigurationIntent())
+    }
+
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (WordEntry) -> ()) {
+        let entry = WordEntry(date: Date(), word: WidgetWord(name: "Kon", meaning: "kamu"), language: .Surabaya, configuration: configuration)
         completion(entry)
     }
-    
+
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-        
+        var entries: [WordEntry] = []
+
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
+        
+        // Get Random Word
+        let lang = Surabaya()
+        let randWord = lang.getRandom()
+        
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = WordEntry(date: entryDate, word: randWord, language: language, configuration: configuration)
             entries.append(entry)
         }
-        
+
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct WordEntry: TimelineEntry {
     let date: Date
+    let word: WidgetWord
+    let language: SupportedWords
     let configuration: ConfigurationIntent
 }
 
 struct LokalanWidgetView: View {
-    //    var word: Word?
+    let word: WidgetWord
+    let date: Date
     
     @Environment(\.widgetFamily) var family: WidgetFamily
     @ViewBuilder
     var body: some View {
         switch family {
         case .systemSmall:
-            widget_lokalanSmallView()
+            widget_lokalanSmallView(word: WidgetWord(name: word.name, meaning: word.meaning), date: Date())
         case .systemMedium:
-            widget_lokalanMediumView()
+            widget_lokalanMediumView(word: WidgetWord(name: word.name, meaning: word.meaning), date: Date())
         @unknown default:
             EmptyView()
         }
@@ -59,10 +70,13 @@ struct LokalanWidgetView: View {
 }
 
 struct widget_lokalanSmallView : View {
+    let word: WidgetWord
+    let date: Date
+    
     var body: some View {
         VStack {
             HStack {
-                Text("Tetek Bengek")
+                Text(word.name)
                     .bold()
                     .font(.headline)
                     .foregroundColor(.white)
@@ -72,7 +86,7 @@ struct widget_lokalanSmallView : View {
             }
             
             HStack {
-                Text("Semuanya (Dengan segala keribetan nya)")
+                Text(word.meaning)
                     .foregroundColor(.white)
                     .font(.footnote)
                 Spacer()
@@ -111,11 +125,14 @@ struct widget_lokalanSmallView : View {
 }
 
 struct widget_lokalanMediumView : View {
+    let word: WidgetWord
+    let date: Date
+    
     var body: some View {
         HStack {
             VStack {
                 HStack {
-                    Text("Tetek Bengek")
+                    Text(word.name)
                         .bold()
                         .font(.headline)
                         .foregroundColor(.white)
@@ -125,7 +142,7 @@ struct widget_lokalanMediumView : View {
                 }
                 
                 HStack {
-                    Text("Semuanya (Dengan segala keribetan nya)")
+                    Text(word.meaning)
                         .foregroundColor(.white)
                         .font(.footnote)
                     Spacer()
@@ -186,17 +203,17 @@ struct widget_lokalan: Widget {
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            LokalanWidgetView()
+            LokalanWidgetView(word: entry.word, date: entry.date)
         }
-        .configurationDisplayName("Word Lokalan")
-        .description("Tampilkan kata yang ingin diingat.")
+        .configurationDisplayName("Pilih Tampilan")
+        .description("Pilih tampilan kata yang ingin diingat.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 struct widget_lokalan_Previews: PreviewProvider {
     static var previews: some View {
-        LokalanWidgetView()
+        LokalanWidgetView(word: WidgetWord(name: "Tetek Bengek", meaning: "Semuanya"), date: Date())
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

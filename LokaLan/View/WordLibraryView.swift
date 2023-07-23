@@ -22,6 +22,9 @@ struct WordLibraryView: View {
     @State private var selectedFilter: String = "A-Z"
     let filter = ["A-Z", "Terbaru", "Popularitas", "Global"]
     
+    @AppStorage("language", store: UserDefaults(suiteName: "group.lokalan"))
+    var language: SupportedWords = SupportedWords.Surabaya
+    
     var body: some View {
         VStack {
             VStack{

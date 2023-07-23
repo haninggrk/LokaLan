@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import WidgetKit
 
 struct WordCardView: View {
     @State var dummyBool = false
@@ -40,6 +41,7 @@ struct WordCardView: View {
                     word.is_widget.toggle()
                     word.save()
                     wordViewmodel.getAllWords()
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
                 SmallButton(label: "Global", systemImage: "globe", color: Color("Blue"),is_activated: word.is_published){
                     if(word.is_published){
